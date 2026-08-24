@@ -1,0 +1,223 @@
+/* ==========================================================================
+   Animations — AI COP
+   ========================================================================== */
+
+/* ── Keyframes ── */
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px)   rotate(0deg); }
+  50%  { transform: translateY(-18px) rotate(4deg); }
+  100% { transform: translateY(0px)   rotate(0deg); }
+}
+
+@keyframes pulse-glow {
+  0%   { box-shadow: 0 0 8px  rgba(0,229,255,0.15); }
+  50%  { box-shadow: 0 0 32px rgba(0,229,255,0.55); }
+  100% { box-shadow: 0 0 8px  rgba(0,229,255,0.15); }
+}
+
+@keyframes morphShape {
+  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+@keyframes rotateOrbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes slideStep {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes glitch-h {
+  0%   { clip-path: polygon(0 2%,  100% 2%,  100% 5%,  0 5%);  transform: translateX(-3px); }
+  20%  { clip-path: polygon(0 15%, 100% 15%, 100% 18%, 0 18%); transform: translateX(3px); }
+  40%  { clip-path: polygon(0 55%, 100% 55%, 100% 60%, 0 60%); transform: translateX(-2px); }
+  60%  { clip-path: polygon(0 78%, 100% 78%, 100% 82%, 0 82%); transform: translateX(3px); }
+  80%  { clip-path: polygon(0 40%, 100% 40%, 100% 44%, 0 44%); transform: translateX(-3px); }
+  100% { clip-path: polygon(0 2%,  100% 2%,  100% 5%,  0 5%);  transform: translateX(0); }
+}
+
+@keyframes borderGlow {
+  0%,100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+
+/* ── Scroll Reveal ── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s var(--ease-out, cubic-bezier(0.16,1,0.3,1)),
+              transform 0.9s var(--ease-out, cubic-bezier(0.16,1,0.3,1));
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.9s ease-out, transform 0.9s ease-out; }
+.scroll-reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.9s ease-out, transform 0.9s ease-out; }
+.scroll-reveal-left.revealed,
+.scroll-reveal-right.revealed { opacity: 1; transform: translateX(0); }
+
+/* Wipe-on-view text reveal */
+.wipe-reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+  transition: opacity 0.35s ease;
+  opacity: 1;
+}
+
+.wipe-reveal.revealed {
+  opacity: 1;
+}
+
+.wipe-reveal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2.2rem;
+  transform: translateX(-140%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 206, 92, 0) 0%,
+    rgba(255, 206, 92, 0.15) 18%,
+    rgba(255, 206, 92, 0.6) 48%,
+    rgba(255, 206, 92, 0.18) 78%,
+    rgba(255, 206, 92, 0) 100%
+  );
+  filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wipe-reveal.revealed::before {
+  opacity: 1;
+  animation: wipeGlowSweep 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.wipe-reveal.revealed::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(255, 219, 136, 0), rgba(255, 219, 136, 1), rgba(255, 219, 136, 0));
+  box-shadow: 0 0 12px rgba(255, 214, 122, 0.95), 0 0 28px rgba(255, 179, 56, 0.65);
+  animation: wipeCursorSweep 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes wipeGlowSweep {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(560%); opacity: 0; }
+}
+
+@keyframes wipeCursorSweep {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+
+/* ── Page Transitions ── */
+.page-enter  { opacity: 0; transform: translateY(16px); }
+.page-active { opacity: 1; transform: translateY(0); transition: opacity 0.45s ease-out, transform 0.45s ease-out; }
+.page-exit   { opacity: 0; transform: translateY(-12px); transition: opacity 0.3s ease-in, transform 0.3s ease-in; }
+
+/* ── Stop-Motion Scroll Frames ── */
+.stop-motion-frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  pointer-events: none;
+}
+
+/* ── Parallax ── */
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+/* ── Background decorative blobs ── */
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  z-index: 0;
+  animation: morphShape 18s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.bg-blob-cyan   { background: rgba(0,229,255,0.6); }
+.bg-blob-amber  { background: rgba(255,176,32,0.6); }
+.bg-blob-violet { background: rgba(168,85,247,0.6); }
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

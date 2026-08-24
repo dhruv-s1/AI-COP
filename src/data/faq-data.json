@@ -1,0 +1,191 @@
+{
+  "synonyms": {
+    "join": ["register", "sign up", "apply", "enroll", "enter", "participate", "submission", "submit", "admission"],
+    "rules": ["rulebook", "guidelines", "regulations", "terms", "policies", "criteria", "requirements", "standards"],
+    "venue": ["location", "place", "where", "address", "school", "gems", "dubai", "map", "directions", "site"],
+    "cost": ["price", "fee", "free", "payment", "money", "ticket", "charge", "expense"],
+    "contact": ["email", "phone", "help", "support", "organizer", "reach", "inquire", "ask", "committee"],
+    "schedule": ["timeline", "date", "when", "time", "calendar", "day", "program", "agenda"],
+    "event": ["competition", "contest", "category", "arena", "challenge", "track", "discipline"],
+    "team": ["members", "size", "group", "squad", "partner", "solo", "individual", "students", "delegation"],
+    "host": ["venue", "location", "school", "gems", "dubai", "organizer", "hosting", "place", "address"]
+  },
+  "stopWords": [
+    "a", "an", "the", "and", "or", "but", "about", "above", "after", "again", "against", "all", "am", "an", "and",
+    "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both",
+    "can", "could", "did", "do", "does", "doing", "don't", "down", "during", "each", "few", "for", "from", "further",
+    "had", "has", "have", "having", "he", "her", "here", "him", "his", "how", "i", "if", "in", "into", "is", "isn't",
+    "it", "its", "just", "me", "more", "most", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only",
+    "or", "other", "our", "ours", "out", "over", "own", "same", "she", "should", "so", "some", "such", "than", "that",
+    "their", "them", "then", "there", "these", "they", "this", "those", "through", "to", "too", "under", "until",
+    "up", "very", "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom", "why", "with", "would",
+    "you", "your", "yours"
+  ],
+  "intents": [
+    {
+      "id": "greetings",
+      "patterns": [
+        "hi", "hello", "hey", "greetings", "good morning", "good afternoon", "good evening", "sup", "yo", "hi there", "hello assistant"
+      ],
+      "answer": "👋 Hello! I am your AI COP Website Assistant. How can I help you explore the competition, registration, schedule, or rules today?",
+      "quickChips": ["Registration", "5 Events", "Rulebook", "Schedule"],
+      "navAction": null
+    },
+    {
+      "id": "farewell",
+      "patterns": [
+        "bye", "goodbye", "see ya", "thanks bye", "exit", "close", "have a good day", "cya"
+      ],
+      "answer": "👋 Goodbye! Best of luck with your preparation for AI COP. I'm always here if you need help navigating!",
+      "quickChips": ["Registration", "5 Events"],
+      "navAction": null
+    },
+    {
+      "id": "gratitude",
+      "patterns": [
+        "thanks", "thank you", "awesome", "great", "helpful", "appreciate it", "thank you very much", "nice"
+      ],
+      "answer": "😊 You're very welcome! Let me know if you need anything else regarding registration, rules, or events.",
+      "quickChips": ["Registration", "Schedule", "Venue"],
+      "navAction": null
+    },
+    {
+      "id": "registration",
+      "patterns": [
+        "how do i register", "where can i apply", "how do i participate", "i want to join ai cop", "can my school enter",
+        "registration", "sign up", "how to join", "enroll", "registration process", "apply for competition", "entry form"
+      ],
+      "answer": "📝 **Registration**: Registration is open for student teams! Click below to open the registration form directly.",
+      "quickChips": ["Rulebook", "Team Size", "Free Cost", "Venue"],
+      "navAction": { "type": "navigate", "route": "#/register", "label": "🚀 Go to Registration Page" }
+    },
+    {
+      "id": "events_all",
+      "patterns": [
+        "what events are there", "list of competitions", "what can we compete in", "all categories", "what challenges exist",
+        "tell me about the events", "event options", "disciplines"
+      ],
+      "answer": "🏆 **5 Flagship Events**: The AI Canvas (Art), Code Forge (Hackathon), Data Odyssey (Data Science), Ethical Arena (Debate), and Future Vision (Pitching).",
+      "quickChips": ["The AI Canvas", "Code Forge", "Data Odyssey", "Ethical Arena", "Future Vision"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "🎨 Explore All Events" }
+    },
+    {
+      "id": "event_canvas",
+      "patterns": [
+        "tell me about the ai canvas", "art competition", "generative art challenge", "prompt engineering event", "drawing contest", "canvas details"
+      ],
+      "answer": "🎨 **The AI Canvas**: A generative art and prompt engineering challenge where teams craft visual masterpieces using AI image tools based on a secret event-day theme.",
+      "quickChips": ["Canvas Rules", "Register", "All Events"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "🎨 View Canvas Details" }
+    },
+    {
+      "id": "event_code_forge",
+      "patterns": [
+        "what is code forge", "coding competition", "hackathon details", "programming challenge", "developer event", "software contest"
+      ],
+      "answer": "⚡ **Code Forge**: A high-intensity coding hackathon where student developers use AI coding copilots to build functional applications under time pressure.",
+      "quickChips": ["Coding Rules", "Register", "All Events"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "⚡ View Code Forge Details" }
+    },
+    {
+      "id": "event_data_odyssey",
+      "patterns": [
+        "explain data odyssey", "data science event", "dataset challenge", "machine learning competition", "analytics track", "data sprint"
+      ],
+      "answer": "🔭 **Data Odyssey**: A data science sprint where teams clean raw datasets, discover trends, train predictive machine learning models, and present insights.",
+      "quickChips": ["Data Rules", "Register", "All Events"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "🔭 View Data Odyssey" }
+    },
+    {
+      "id": "event_ethical_arena",
+      "patterns": [
+        "what is ethical arena", "ethics debate", "ai safety competition", "debate challenge", "morality track", "philosophy debate"
+      ],
+      "answer": "⚖️ **Ethical Arena**: A parliamentary debate competition tackling critical AI dilemmas including safety, bias, copyright, autonomous systems, and human identity.",
+      "quickChips": ["Debate Rules", "Register", "All Events"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "⚖️ View Ethical Arena" }
+    },
+    {
+      "id": "event_future_vision",
+      "patterns": [
+        "details on future vision", "pitching competition", "startup challenge", "innovation pitch", "sdg project", "grand solution pitch"
+      ],
+      "answer": "🚀 **Future Vision**: A startup-style pitch event where teams design and present AI solutions addressing real-world UN Sustainable Development Goals.",
+      "quickChips": ["Pitch Rules", "Register", "All Events"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "🚀 View Future Vision" }
+    },
+    {
+      "id": "rulebook",
+      "patterns": [
+        "where are the rules", "competition guidelines", "how does the challenge work", "what are the requirements", "rulebook", "regulations", "terms"
+      ],
+      "answer": "📜 **Rulebook**: All events enforce strict fair-play guidelines. All AI tools and prompts utilized during competitions must be fully documented.",
+      "quickChips": ["Registration", "Eligibility", "Team Size"],
+      "navAction": { "type": "navigate", "route": "#/about", "label": "📖 View Full Rulebook" }
+    },
+    {
+      "id": "venue",
+      "patterns": [
+        "host", "hosting", "hosted by", "host school", "who is hosting", "who hosts", "which school is hosting",
+        "where is the event hosted", "event location", "venue address", "where is gems school", "school location", "school map", "map", "directions", "dubai venue", "how to get to venue", "where is it"
+      ],
+      "answer": "🏫 **Host School & Venue**: AI COP is proudly hosted by **GEMS Our Own Indian School, Dubai** (Al Quoz 1, Dubai, UAE).",
+      "quickChips": ["School Website", "Schedule", "Registration"],
+      "navAction": { "type": "url", "url": "https://maps.app.goo.gl/LP9qMhsvuQrmXQzVA", "label": "📍 View Map" }
+    },
+    {
+      "id": "cost",
+      "patterns": [
+        "how much does it cost", "is registration free", "entry fee", "ticket price", "is there a charge", "payment details"
+      ],
+      "answer": "🎉 **100% Free**: Participation in AI COP is completely free for all registered school teams!",
+      "quickChips": ["Register", "Eligibility", "Venue"],
+      "navAction": { "type": "navigate", "route": "#/register", "label": "📝 Register Now for Free" }
+    },
+    {
+      "id": "team_eligibility",
+      "patterns": [
+        "who is eligible", "what grade can join", "team size requirements", "how many students per team", "can i compete alone", "school requirements"
+      ],
+      "answer": "🎓 **Eligibility & Teams**: Open to high school students (Grades 8–12). Teams consist of 2 to 4 members from the same school delegation.",
+      "quickChips": ["Registration", "Rulebook", "Cost"],
+      "navAction": { "type": "navigate", "route": "#/register", "label": "👥 Register Your Team" }
+    },
+    {
+      "id": "schedule",
+      "patterns": [
+        "when is the event", "event date", "timeline", "when does it start", "schedule details", "program agenda"
+      ],
+      "answer": "📅 **Schedule**: Competition dates and timeline milestones will be communicated to all registered school delegations via email.",
+      "quickChips": ["Registration", "Venue", "5 Events"],
+      "navAction": { "type": "scroll", "target": "#image-sequence-section", "label": "📅 View Timeline Section" }
+    },
+    {
+      "id": "theme",
+      "patterns": [
+        "what is the theme of ai cop", "mission statement", "motto", "philosophy", "what does ai cop stand for"
+      ],
+      "answer": "💡 **Theme**: *\"Technology should amplify human identity, not replace it.\"* We promote AI as a tool for creative human amplification.",
+      "quickChips": ["5 Events", "Registration", "Venue"],
+      "navAction": { "type": "navigate", "route": "#/about", "label": "💡 Read Our Mission" }
+    },
+    {
+      "id": "prizes",
+      "patterns": [
+        "what are the prizes", "awards info", "trophy details", "certificates", "what do winners get"
+      ],
+      "answer": "🏆 **Prizes**: Winners receive Overall School Trophies, medals, tech vouchers, and official verified Certificates of Excellence!",
+      "quickChips": ["5 Events", "Register", "Rulebook"],
+      "navAction": { "type": "navigate", "route": "#/about", "label": "🏆 View Awards Info" }
+    },
+    {
+      "id": "contact",
+      "patterns": [
+        "how to contact organizers", "email address", "support team", "helpdesk", "reach committee"
+      ],
+      "answer": "📧 **Contact**: Contact the AI COP Student Committee at GEMS Our Own Indian School via your teacher advisor or the contact section.",
+      "quickChips": ["Venue", "Registration", "FAQ"],
+      "navAction": { "type": "navigate", "route": "#/about", "label": "📧 Contact Support" }
+    }
+  ]
+}

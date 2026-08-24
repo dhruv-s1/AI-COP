@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Design Tokens — AI COP
+   Fonts: Syne / DM Sans / Space Mono
+   Palette: Strict Logitech Reference (5 Swatches: Off-White to Pitch Black)
+            + Vibrant Orange Secondary/Tertiary Accent
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap');
+
+/* First-paint loader: reveal the app after the initial browser load event. */
+html,
+body {
+  min-height: 100%;
+}
+
+body.site-loading {
+  overflow: hidden;
+}
+
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  background: #000000;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.site-loader.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-loader-gif {
+  display: block;
+  width: min(78vw, 720px);
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
+  opacity: 0;
+  clip-path: inset(0 0 0 3px);
+  transform: translateX(-1.5px);
+  transition: opacity 0.2s ease;
+}
+
+.site-loader.is-active .site-loader-gif {
+  opacity: 1;
+}
+
+.site-loader-text {
+  color: rgba(255,255,255,0.82);
+  font: 700 0.75rem var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: translateY(-4.00rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader {
+    transition-duration: 0.01ms;
+  }
+}
+
+:root {
+  /* ── 5 Swatches from Reference ── */
+  --swatch-1-white:  #F2F2F4;  /* Off-white / Crisp Light Silver */
+  --swatch-2-light:  #A0A2A8;  /* Light Slate Gray */
+  --swatch-3-mid:    #4A4C52;  /* Medium Dark Slate */
+  --swatch-4-dark:   #16181B;  /* Deep Charcoal Surface */
+  --swatch-5-black:  #090A0C;  /* Pitch Black Root */
+
+  /* ── Vibrant Orange Accent ── */
+  --accent-orange:   #FF6600;  /* Electric Vibrant Orange */
+  --accent-orange-hi:#FF7B1C;  /* Bright Orange Highlight */
+  --accent-orange-bg:rgba(255, 102, 0, 0.12);
+
+  /* ── Base Surfaces ── */
+  --bg-root:     var(--swatch-5-black);
+  --bg-surface:  #121316;
+  --bg-raised:   var(--swatch-4-dark);
+  --bg-overlay:  rgba(9, 10, 12, 0.94);
+
+  /* ── Main Accent Mappings ── */
+  --accent-primary:   var(--swatch-1-white);  /* Crisp Off-White */
+  --accent-secondary: var(--accent-orange);   /* Vibrant Orange */
+  --accent-tertiary:  var(--swatch-2-light);  /* Light Silver Slate */
+
+  /* ── Component Accents (Monochrome + Vibrant Orange) ── */
+  --accent-violet:    var(--accent-orange);
+  --accent-green:     var(--swatch-1-white);
+  --accent-rose:      #FF4500;
+
+  /* ── Text Hierarchy ── */
+  --text-loud:    var(--swatch-1-white);  /* #F2F2F4 */
+  --text-normal:  #D4D4D8;
+  --text-muted:   var(--swatch-2-light);  /* #A0A2A8 */
+  --text-dim:     var(--swatch-3-mid);    /* #4A4C52 */
+
+  /* ── Glass & Borders ── */
+  --glass-bg:     rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-glow:   rgba(255, 102, 0, 0.15);
+
+  /* ── Typography ── */
+  --font-brand:   'Barlow Condensed', 'League Gothic', 'Bebas Neue', 'Big Shoulders Display', sans-serif;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'Space Mono', monospace;
+
+  /* ── Spacing ── */
+  --sp-1:  0.25rem;  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;  --sp-4:  1rem;
+  --sp-5:  1.25rem;  --sp-6:  1.5rem;
+  --sp-7:  1.75rem;
+  --sp-8:  2rem;     --sp-10: 2.5rem;
+  --sp-12: 3rem;     --sp-16: 4rem;
+  --sp-20: 5rem;     --sp-24: 6rem;
+  --sp-32: 8rem;
+
+  /* ── Radii ── */
+  --r-sm:   6px;   --r-md:  12px;
+  --r-lg:   18px;  --r-xl:  24px;
+  --r-2xl:  32px;  --r-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:   0 2px 6px rgba(0, 0, 0, 0.5);
+  --shadow-md:   0 6px 20px rgba(0, 0, 0, 0.6);
+  --shadow-lg:   0 16px 40px rgba(0, 0, 0, 0.7);
+  --shadow-xl:   0 28px 72px rgba(0, 0, 0, 0.85);
+  --shadow-glow-amber: 0 0 30px rgba(255, 102, 0, 0.35);
+  --shadow-glow-cyan:  0 0 30px rgba(242, 242, 244, 0.25);
+  --shadow-glow-orange: 0 0 30px rgba(255, 102, 0, 0.4);
+  --shadow-inner: inset 2px 2px 6px rgba(0,0,0,0.6), inset -1px -1px 4px rgba(255,255,255,0.03);
+
+  /* ── Transitions ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast:   150ms var(--ease-out);
+  --t-normal: 300ms var(--ease-out);
+  --t-slow:   500ms var(--ease-out);
+  --t-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-family: var(--font-body);
+  color: var(--text-normal);
+  background: var(--bg-root);
+  scroll-behavior: smooth;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(255, 102, 0, 0.04), transparent),
+    radial-gradient(ellipse 50% 40% at 80% 90%, rgba(242, 242, 244, 0.02), transparent);
+  background-color: var(--bg-root);
+}
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+ul, ol { list-style: none; }
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-loud);
+  letter-spacing: -0.03em;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: var(--sp-6); }
+h2 { font-size: clamp(1.75rem, 4vw, 3rem);  margin-bottom: var(--sp-5); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); margin-bottom: var(--sp-4); }
+h4 { font-size: clamp(1rem, 2vw, 1.35rem); margin-bottom: var(--sp-3); }
+
+p { color: var(--text-normal); margin-bottom: var(--sp-4); line-height: 1.7; }
+
+a { color: inherit; text-decoration: none; transition: color var(--t-fast); }
+a:hover { color: var(--accent-orange); }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+/* ── Utilities ── */
+.container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 var(--sp-6); }
+.text-center { text-align: center; }
+
+/* Gradient Shimmer Text (Monochrome silver to vibrant electric orange) */
+.gradient-text {
+  background: linear-gradient(
+    100deg,
+    var(--swatch-1-white) 0%,
+    #FFFFFF 20%,
+    var(--accent-orange) 50%,
+    var(--swatch-2-light) 80%,
+    var(--swatch-1-white) 100%
+  );
+  background-size: 300% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+/* High-contrast text classes */
+.text-accent { color: var(--accent-orange); }
+.text-cyan { color: var(--swatch-1-white); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-orange);
+  background: var(--accent-orange-bg);
+  border: 1px solid rgba(255, 102, 0, 0.25);
+  padding: 0.35rem 1.1rem;
+  border-radius: var(--r-full);
+  margin-bottom: var(--sp-3);
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(255, 210, 128, 0.12),
+    0 0 18px rgba(255, 198, 92, 0.22),
+    0 0 34px rgba(255, 161, 0, 0.12);
+  text-shadow: 0 0 10px rgba(255, 200, 92, 0.12);
+}
+
+.eyebrow::before {
+  content: '';
+  position: absolute;
+  inset: -7px -10px;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(255, 214, 122, 0.32) 0%, rgba(255, 214, 122, 0.12) 38%, transparent 72%);
+  filter: blur(8px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto var(--sp-10);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+  .container { padding: 0 var(--sp-4); }
+}
+
+/* ── LIGHT MODE OVERRIDES ── */
+body.light-mode {
+  --bg-root:     #F4F4F6;
+  --bg-surface:  #FFFFFF;
+  --bg-raised:   #EAEAEE;
+  --bg-overlay:  rgba(244, 244, 246, 0.95);
+
+  --text-loud:    #090A0C;
+  --text-normal:  #2B2D32;
+  --text-muted:   #686B73;
+  --text-dim:     #9E9FA6;
+
+  --glass-bg:     rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-glow:   rgba(255, 102, 0, 0.15);
+
+  --shadow-sm:   0 2px 6px rgba(0, 0, 0, 0.06);
+  --shadow-md:   0 6px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg:   0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .hero-bg {
+  background: linear-gradient(160deg, #F4F4F6 0%, #EAEAEE 50%, #F4F4F6 100%);
+}
+
+body.light-mode .navbar {
+  /* Use the canonical navbar hue */
+  background: linear-gradient(90deg, #ff7d2e 0%, #ff7d2e 100%);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.light-mode .navbar.scrolled {
+  background: linear-gradient(90deg, #ff7d2e 0%, #ff7d2e 100%);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.light-mode .nav-brand {
+  color: #090A0C;
+}
+
+body.light-mode .nav-link {
+  color: #5C5E64;
+}
+
+body.light-mode .nav-link:hover {
+  color: #090A0C;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .btn-neo {
+  background: #EAEAEE;
+  color: #090A0C;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .btn-neo-outline {
+  color: #090A0C;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Light mode gradient text override: cycling dark slate to vibrant orange (no white cycle) */
+body.light-mode .gradient-text {
+  background: linear-gradient(
+    100deg,
+    #090A0C 0%,
+    var(--accent-orange) 45%,
+    #4A4C52 75%,
+    #090A0C 100%
+  );
+  background-size: 300% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}

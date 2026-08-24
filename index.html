@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO -->
+  <title>AI COP — Interschool AI Competition | GEMS OIS</title>
+  <meta name="description" content="AI COP is a 5-event interschool competition promoting responsible AI use — amplifying human identity, not replacing it. Hosted by GEMS Our Own Indian School, Al Quoz, Dubai." />
+  <meta name="keywords" content="AI COP, interschool competition, artificial intelligence, GEMS OIS, AI events, student competition, Dubai" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI COP — Interschool AI Competition" />
+  <meta property="og:description" content="5 Events. 1 Mission. Amplify your identity with AI. An interschool competition by GEMS OIS." />
+  <meta property="og:type" content="website" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://schoolfinder.ae/wp-content/uploads/listing-uploads/logo/2023/07/1577527730-54-gems-our-own-indian-school-al-quoz.png" />
+  
+  <!-- Fonts — Barlow Condensed / Bebas Neue (brand font), Syne (headlines), DM Sans (body), Space Mono (accent/code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;0,900;1,800;1,900&family=Bebas+Neue&family=League+Gothic&family=Big+Shoulders+Display:wght@800;900&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/index.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/animations.css" />
+  <link rel="stylesheet" href="/src/styles/pages.css" />
+</head>
+<body class="site-loading">
+  <!-- Activates only when the initial document load takes longer than one second. -->
+  <div class="site-loader" id="site-loader" role="status" aria-label="Loading AI COP">
+    <img class="site-loader-gif" src="/loading-animation.gif" alt="" aria-hidden="true" />
+    <span class="site-loader-text" aria-hidden="true">Loading...</span>
+  </div>
+
+  <div class="mobile-preview-modal" id="mobile-preview-modal" role="dialog" aria-modal="true" aria-labelledby="mobile-preview-title">
+    <div class="mobile-preview-card">
+      <span class="mobile-preview-kicker">Mobile preview</span>
+      <h2 id="mobile-preview-title">Best experienced on a larger screen</h2>
+      <p>This phone version is a simplified preview. Open AI COP on a laptop, desktop, or larger device to see the full experience and all content.</p>
+      <button class="mobile-preview-dismiss" id="mobile-preview-dismiss" type="button">Continue on phone</button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar-container"></nav>
+  
+  <!-- Main Content -->
+  <main id="app"></main>
+  
+  <!-- Footer -->
+  <footer id="footer-container"></footer>
+  
+  <!-- App Entry -->
+  <script type="module" src="/src/main.js"></script>
+  <script>
+    (() => {
+      const loader = document.getElementById('site-loader');
+      let loaderStarted = false;
+      let forceFinish = false;
+      let finishRequested = false;
+      let revealTimer;
+      let safetyTimer;
+
+      window.__aicopLoadingGates = window.__aicopLoadingGates || [];
+
+      function startLoadingAnimation() {
+        if (!loader || loaderStarted) return;
+        loaderStarted = true;
+        loader.classList.add('is-active');
+      }
+
+      async function finishLoading(isForced = false) {
+        window.clearTimeout(revealTimer);
+        if (isForced) forceFinish = true;
+        if (!loader || loader.classList.contains('is-done')) return;
+        if (!isForced && !finishRequested) {
+          finishRequested = true;
+          const gates = window.__aicopLoadingGates;
+          if (gates.length > 0) {
+            await Promise.race([
+              Promise.allSettled(gates),
+              new Promise(resolve => window.setTimeout(resolve, 11000)),
+            ]);
+          }
+        }
+        if (!isForced && forceFinish) return;
+        window.clearTimeout(safetyTimer);
+        if (!loaderStarted) {
+          loader.classList.add('is-done');
+          document.body.classList.remove('site-loading');
+          window.setTimeout(() => loader.remove(), 550);
+          return;
+        }
+        loader.classList.add('is-done');
+        document.body.classList.remove('site-loading');
+        window.setTimeout(() => loader.remove(), 850);
+      }
+
+      if (document.readyState === 'complete') {
+        finishLoading();
+      } else {
+        revealTimer = window.setTimeout(startLoadingAnimation, 1000);
+        // A failed or hanging resource must never keep the page covered forever.
+        safetyTimer = window.setTimeout(() => finishLoading(true), 12000);
+        window.addEventListener('load', () => finishLoading(), { once: true });
+      }
+    })();
+
+    (() => {
+      const isMobile = window.matchMedia('(max-width: 720px)').matches || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+      const modal = document.getElementById('mobile-preview-modal');
+      const dismiss = document.getElementById('mobile-preview-dismiss');
+      if (!isMobile || !modal) return;
+      modal.classList.add('is-visible');
+      dismiss?.addEventListener('click', () => modal.classList.remove('is-visible'), { once: true });
+    })();
+  </script>
+</body>
+</html>
