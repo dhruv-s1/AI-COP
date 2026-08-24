@@ -118,7 +118,7 @@ export function createFooter() {
                                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-9h3l.4-3.5h-3.4V3.8c0-1 .3-1.7 1.7-1.7H17V.1c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2V9.5H7.5V13h3V22z" fill="currentColor"/></svg>
                             </a>
                             <a class="social-link social-link--x" href="https://x.com/gemsoois" target="_blank" rel="noopener noreferrer" aria-label="X">
-                                <img src="X%20logo.png" alt="X logo" />
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-7.34L5.65 22H2.54l7.24-8.27L2.8 2h6.4l4.42 6.75L18.9 2zm-1.1 17.85h1.73L8.28 4.03H6.42L17.8 19.85z" fill="currentColor" /></svg>
                             </a>
                             <a class="social-link social-link--instagram" href="https://www.instagram.com/gems.ois" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2zm0 2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2zm5.2-3.4a1 1 0 1 1-1 1 1 1 0 0 1 1-1z" fill="currentColor"/></svg>

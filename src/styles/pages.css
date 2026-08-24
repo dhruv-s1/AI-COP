@@ -81,6 +81,8 @@
   object-fit: cover;
   z-index: 1;
   pointer-events: none;
+  transform: scale(1.035);
+  filter: blur(7px);
   transition: opacity var(--t-normal);
 }
 
@@ -104,7 +106,7 @@ body.light-mode #hero-bg-video-light {
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(9, 10, 12, 0.5);
+  background: rgba(9, 10, 12, 0.42);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 2;
@@ -113,7 +115,7 @@ body.light-mode #hero-bg-video-light {
 }
 
 body.light-mode .hero-video-overlay {
-  background: rgba(242, 242, 244, 0.2); /* 80% transparent light-mode panel overlay */
+  background: rgba(242, 242, 244, 0.16); /* 84% transparent light-mode panel overlay */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   opacity: 1;
