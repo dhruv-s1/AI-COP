@@ -8,16 +8,14 @@ import { CreateMLCEngine } from "@mlc-ai/web-llm";
 // Default 1B Model: Meta Llama 3.2 1B Instruct (Quantized q4f16_1 for WebGPU)
 export const DEFAULT_1B_MODEL = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
 
-const SYSTEM_PROMPT = `You are the AI COP Assistant — an intelligent AI running 100% locally inside the user's browser via WebGPU for the AI COP Championship (Artificial Intelligence Community of Practice).
+const SYSTEM_PROMPT = `You are the AICon Assistant — an intelligent AI running 100% locally inside the user's browser via WebGPU for the AICon Championship.
 Key Information:
 - Theme: "Technology should amplify human identity, not replace it."
 - Host Venue: GEMS Our Own Indian School, Dubai (Al Quoz 1).
-- 5 Flagship Events: 
-  1. Panel Discussion
-  2. Ethical Conference
-  3. Hackathon
-  4. AI vs Human
-  5. Roundtable Conference
+- 3 Flagship Events: 
+  1. Ethical Conference
+  2. Hackathon
+  3. AI Studio
 - Registration: 100% Free for student teams (2 to 4 members per team).
 Be friendly, helpful, concise, and structured. Use Markdown formatting when helpful.`;
 

@@ -7,19 +7,18 @@ import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 const port = Number(process.env.PORT || 5173);
 const root = process.cwd();
 const env = loadEnv('development', root, '');
-const mistralApiKey = process.env.MISTRAL_API_KEY || env.MISTRAL_API_KEY;
-const mistralModel = process.env.MISTRAL_MODEL || env.MISTRAL_MODEL || 'mistral-small-latest';
+const groqApiKey = process.env.GROQ_API_KEY || env.GROQ_API_KEY;
+const groqModel = process.env.GROQ_MODEL || env.GROQ_MODEL || 'llama-3.3-70b-versatile';
 const requestCounts = new Map();
 const MAX_BODY_SIZE = 256 * 1024;
 const RATE_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT = 30;
-const VALID_EVENTS = new Set(['event1', 'event2', 'event3', 'event4', 'event5']);
+const VALID_EVENTS = new Set(['event1', 'event2', 'event3', 'event4']);
 const PARTICIPANT_COUNTS = {
-  event1: Number(env.VITE_PANEL_DISCUSSION_PARTICIPANTS) || 1,
-  event2: Number(env.VITE_ETHICAL_CONFERENCE_PARTICIPANTS) || 1,
-  event3: Number(env.VITE_HACKATHON_PARTICIPANTS) || 1,
-  event4: Number(env.VITE_AI_VS_HUMAN_PARTICIPANTS) || 1,
-  event5: Number(env.VITE_ROUNDTABLE_CONFERENCE_PARTICIPANTS) || 1,
+  event1: Number(env.VITE_ETHICAL_CONFERENCE_PARTICIPANTS) || 1,
+  event2: Number(env.VITE_HACKATHON_PARTICIPANTS) || 1,
+  event3: Number(env.VITE_AI_STUDIO_PARTICIPANTS) || 1,
+  event4: Number(env.VITE_ROUNDTABLE_CONFERENCE_PARTICIPANTS) || 1,
 };
 const firebaseConfigured = Boolean(env.FIREBASE_PROJECT_ID && env.FIREBASE_CLIENT_EMAIL && env.FIREBASE_PRIVATE_KEY);
 const firebaseApp = firebaseConfigured
@@ -34,21 +33,20 @@ const firebaseApp = firebaseConfigured
 const firestore = firebaseApp ? getFirestore(firebaseApp) : null;
 
 const knowledgeBase = `
-AI COP is an interschool artificial intelligence competition hosted by GEMS Our Own Indian School (GEMS OIS), Al Quoz 1, Dubai, UAE.
+AICon is an interschool artificial intelligence competition hosted by GEMS Our Own Indian School (GEMS OIS), Al Quoz 1, Dubai, UAE.
 Host school website: https://www.gemsoo-alquoz.com/
 Contact: info_ois@gemsedu.com, +971 4 3391188. Venue: GEMS Our Own Indian School, Al Quoz, Dubai, UAE.
 Registration is free. The registration page is #/register. Users select events, then enter school details and coordinator details in the form wizard.
-The all-events page is #/events. The five event detail routes are #/event/1 through #/event/5.
-Event 1: Panel Discussion. Live panel and audience questions. Team: 2-3 members. Download brief: /downloads/panel-discussion.txt.
-Event 2: Ethical Conference. Case study and conference presentation. Team: 2-4 members. Download brief: /downloads/ethical-conference.txt.
-Event 3: Hackathon. 3-hour build sprint and demo. Team: 2-4 members. Download brief: /downloads/hackathon.txt.
-Event 4: AI vs Human. Structured debate and rebuttal. Team: 2 members. Download brief: /downloads/ai-vs-human.txt.
-Event 5: Roundtable Conference. Roundtable pitch and open discussion. Team: 3-5 members. Download brief: /downloads/roundtable-conference.txt.
+The all-events page is #/events. The four event detail routes are #/event/1 through #/event/4.
+Event 1: Ethical Conference. Case study and conference presentation. Team: 2-4 members. Download brief: /downloads/ethical-conference.txt.
+Event 2: Hackathon. 3-hour build sprint and demo. Team: 2-4 members. Download brief: /downloads/hackathon.txt.
+Event 3: AI Studio. Structured debate and rebuttal. Team: 2 members. Download brief: /downloads/ai-studio.txt.
+Event 4: Roundtable Conference. Roundtable pitch and open discussion. Team: 3-5 members. Download brief: /downloads/roundtable-conference.txt.
 Website navigation: Home is #/. Events is #/events. Registration is #/register. A section scroll to the home events deck uses #section-events-deck-section.
 When guiding a user, use navigate for internal hash routes, scroll for the home events section, and url only for the school website. Never invent dates, prices, rules, contacts, or routes.
 `;
 
-const systemPrompt = `You are the official AI COP website assistant. Answer using only the knowledge base below. Be warm, concise, and helpful. You can explain the website UI when asked.
+const systemPrompt = `You are the official AICon website assistant. Answer using only the knowledge base below. Be warm, concise, and helpful. You can explain the website UI when asked.
 
 Return ONLY valid JSON with this exact shape:
 {"answer":"string with optional Markdown","quickChips":["string"],"navAction":null|{"type":"navigate"|"scroll"|"url","route":"string","target":"string","url":"string","label":"string"}}
@@ -126,10 +124,10 @@ function validateRegistration(payload) {
 function parseModelResponse(content) {
   const cleaned = content.trim().replace(/^```json\s*/i, '').replace(/\s*```$/i, '');
   const parsed = JSON.parse(cleaned);
-  if (typeof parsed.answer !== 'string') throw new Error('Mistral response missing answer');
+  if (typeof parsed.answer !== 'string') throw new Error('Groq response missing answer');
   return {
     answer: parsed.answer,
-    quickChips: Array.isArray(parsed.quickChips) ? parsed.quickChips.slice(0, 4).map(String) : ['Registration', '5 Events', 'Venue'],
+    quickChips: Array.isArray(parsed.quickChips) ? parsed.quickChips.slice(0, 4).map(String) : ['Registration', '4 Events', 'Venue'],
     navAction: parsed.navAction && typeof parsed.navAction === 'object' ? parsed.navAction : null,
   };
 }
@@ -139,8 +137,8 @@ async function handleChat(request, response) {
     sendJson(response, 429, { error: 'Too many requests. Please try again later.' });
     return;
   }
-  if (!mistralApiKey) {
-    sendJson(response, 503, { error: 'Mistral is not configured. Add MISTRAL_API_KEY to your environment.' });
+  if (!groqApiKey) {
+    sendJson(response, 503, { error: 'Groq is not configured. Add GROQ_API_KEY to your environment.' });
     return;
   }
 
@@ -152,18 +150,18 @@ async function handleChat(request, response) {
       .slice(-12)
       .map((message) => ({ role: message.role, content: message.content.slice(0, 2000) }));
 
-    const mistralResponse = await fetch('https://api.mistral.ai/v1/chat/completions', {
+    const groqResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${mistralApiKey}` },
-      body: JSON.stringify({ model: mistralModel, temperature: 0.2, max_tokens: 500, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: systemPrompt }, ...safeMessages] }),
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${groqApiKey}` },
+      body: JSON.stringify({ model: groqModel, temperature: 0.2, max_tokens: 500, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: systemPrompt }, ...safeMessages] }),
     });
 
-    if (!mistralResponse.ok) {
-      const detail = await mistralResponse.text();
-      throw new Error(`Mistral request failed (${mistralResponse.status}): ${detail.slice(0, 300)}`);
+    if (!groqResponse.ok) {
+      const detail = await groqResponse.text();
+      throw new Error(`Groq request failed (${groqResponse.status}): ${detail.slice(0, 300)}`);
     }
 
-    const result = await mistralResponse.json();
+    const result = await groqResponse.json();
     sendJson(response, 200, parseModelResponse(result.choices?.[0]?.message?.content || '{}'));
   } catch (error) {
     console.error(error);
@@ -235,4 +233,4 @@ const server = createServer((request, response) => {
   });
 });
 
-server.listen(port, () => console.log(`AI COP running at http://localhost:${port}`));
+server.listen(port, () => console.log(`AICon running at http://localhost:${port}`));

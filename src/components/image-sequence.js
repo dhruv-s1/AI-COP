@@ -46,25 +46,40 @@ function preloadFrames(onProgress) {
 }
 
 /**
- * Draw an image onto the canvas using `cover` fit (fills viewport, no edges visible).
+ * Draw one or two images onto the canvas using `cover` fit with crossfade.
  */
-function drawFrame(ctx, canvas, img, dpr) {
-  if (!img) return;
+function drawFrame(ctx, canvas, img1, img2, fraction, dpr) {
+  if (!img1) return;
 
   const cw = canvas.width / dpr;
   const ch = canvas.height / dpr;
-  const iw = img.naturalWidth;
-  const ih = img.naturalHeight;
-
-  // cover — fill the canvas, crop overflow
-  const scale = Math.max(cw / iw, ch / ih);
-  const dw = iw * scale;
-  const dh = ih * scale;
-  const dx = (cw - dw) / 2;
-  const dy = (ch - dh) / 2;
 
   ctx.clearRect(0, 0, cw, ch);
-  ctx.drawImage(img, dx, dy, dw, dh);
+
+  const drawSingle = (img, alpha) => {
+    if (!img) return;
+    const iw = img.naturalWidth;
+    const ih = img.naturalHeight;
+    const scale = Math.max(cw / iw, ch / ih);
+    const dw = iw * scale;
+    const dh = ih * scale;
+    const dx = (cw - dw) / 2;
+    const dy = (ch - dh) / 2;
+
+    ctx.globalAlpha = alpha;
+    ctx.drawImage(img, dx, dy, dw, dh);
+  };
+
+  // Draw base image fully opaque
+  drawSingle(img1, 1);
+
+  // Draw next image blended on top
+  if (img2 && fraction > 0) {
+    drawSingle(img2, fraction);
+  }
+
+  // Reset alpha
+  ctx.globalAlpha = 1;
 }
 
 /**
@@ -85,7 +100,12 @@ export function initImageSequence(sectionId, canvasId, loaderId, onReady) {
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
   let frames = [];
-  let currentFrame = -1;
+  
+  let targetProgress = 0;
+  let currentProgress = 0;
+  let currentExactFrame = -1;
+  const ease = 0.1; // Lerp easing factor
+
   let rafId = null;
   let alive = true;
 
@@ -100,8 +120,11 @@ export function initImageSequence(sectionId, canvasId, loaderId, onReady) {
     canvas.style.height = rect.height + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     // Redraw current frame after resize
-    if (frames[currentFrame]) {
-      drawFrame(ctx, canvas, frames[currentFrame], dpr);
+    if (frames.length > 0) {
+       const f1 = Math.floor(Math.max(0, currentExactFrame));
+       const f2 = Math.min(f1 + 1, FRAME_COUNT - 1);
+       const frac = Math.max(0, currentExactFrame - f1);
+       drawFrame(ctx, canvas, frames[f1], frames[f2], frac, dpr);
     }
   }
 
@@ -116,15 +139,27 @@ export function initImageSequence(sectionId, canvasId, loaderId, onReady) {
 
   function tick() {
     if (!alive) return;
-    const progress = getScrollProgress();
-    const idx = Math.min(
-      Math.floor(progress * FRAME_COUNT),
-      FRAME_COUNT - 1
-    );
+    
+    targetProgress = getScrollProgress();
+    
+    // Lerp progress for smooth scroll effect
+    currentProgress += (targetProgress - currentProgress) * ease;
+    
+    // Snap if very close
+    if (Math.abs(targetProgress - currentProgress) < 0.0001) {
+      currentProgress = targetProgress;
+    }
 
-    if (idx !== currentFrame && frames[idx]) {
-      currentFrame = idx;
-      drawFrame(ctx, canvas, frames[idx], dpr);
+    const exactFrame = currentProgress * (FRAME_COUNT - 1);
+
+    // Only redraw if the frame fraction changed meaningfully
+    if (Math.abs(exactFrame - currentExactFrame) > 0.005) {
+      currentExactFrame = exactFrame;
+      const frame1Idx = Math.floor(exactFrame);
+      const frame2Idx = Math.min(frame1Idx + 1, FRAME_COUNT - 1);
+      const fraction = exactFrame - frame1Idx;
+
+      drawFrame(ctx, canvas, frames[frame1Idx], frames[frame2Idx], fraction, dpr);
     }
 
     // Hide navbar & floating elements while sequence is active
@@ -163,8 +198,8 @@ export function initImageSequence(sectionId, canvasId, loaderId, onReady) {
     }
 
     // Draw first frame
-    currentFrame = 0;
-    drawFrame(ctx, canvas, frames[0], dpr);
+    currentExactFrame = 0;
+    drawFrame(ctx, canvas, frames[0], frames[1], 0, dpr);
     onReady?.();
 
     // Start RAF loop

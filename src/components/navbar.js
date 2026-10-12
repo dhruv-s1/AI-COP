@@ -3,13 +3,13 @@ export function createNavbar() {
         <nav class="navbar" id="main-navbar">
             <div class="nav-inner">
                 <a href="#/" class="nav-brand" aria-label="Home">
-                    AI <span class="brand-accent">COP</span>
+                    AI<span class="brand-accent">Con</span>
                 </a>
 
                 <div class="nav-center">
                     <a href="#/" class="nav-link">Home</a>
                     <a href="#section-events-deck-section" class="nav-link">Events</a>
-                    <a href="#/register" class="nav-link">Register</a>
+                    <a href="https://forms.cloud.microsoft/r/gxrsE4k10s" target="_blank" rel="noopener noreferrer" class="nav-link">Register</a>
                 </div>
 
                 <div class="nav-right">
@@ -34,7 +34,7 @@ export function createNavbar() {
                 </button>
                 <a href="#/" class="nav-link mobile-link">Home</a>
                 <a href="#section-events-deck-section" class="nav-link mobile-link">Events</a>
-                <a href="#/register" class="nav-link mobile-link">Register</a>
+                <a href="https://forms.cloud.microsoft/r/gxrsE4k10s" target="_blank" rel="noopener noreferrer" class="nav-link mobile-link">Register</a>
             </div>
         </nav>
     `;
@@ -74,7 +74,7 @@ export function initNavbar() {
             if (activeSection === 'events') {
                 shouldActivate = isSectionEvents;
             } else if (activeSection === 'register') {
-                shouldActivate = href === '#/register';
+                shouldActivate = false; // Register is now an external link
             } else if (activeSection === 'home') {
                 shouldActivate = href === '#/';
             } else {

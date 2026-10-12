@@ -1,5 +1,5 @@
 /**
- * AI COP Website — SPA Router
+ * AICon Website — SPA Router
  * Hash-based client-side routing with smooth page transitions
  */
 
@@ -16,7 +16,6 @@ function setNavHighlight(section) {
 
 function deriveNavSection(path) {
   if (path === '/') return 'home';
-  if (path === '/register') return 'register';
   if (path === '/events') return 'events';
   if (path.startsWith('/event')) return 'events';
   return null;

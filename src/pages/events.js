@@ -6,9 +6,9 @@ export function renderEvents() {
         <div class="events-index-page">
             <header class="events-index-header">
                 <h1>Choose your<br><em>event.</em></h1>
-                <p>Five ways to question, build, debate, and imagine with AI.</p>
+                <p>Three ways to question, build, and debate with AI.</p>
             </header>
-            <section class="events-index-grid" aria-label="AI COP events">
+            <section class="events-index-grid" aria-label="AICon events">
                 ${EVENT_DATA.map((event) => `
                     <a class="event-index-card" href="#/event/${event.id}" style="--event-image:url('${event.darkImage}');">
                         <div class="event-index-image"></div>

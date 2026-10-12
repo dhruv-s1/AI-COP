@@ -6,8 +6,8 @@ export function renderEventPage(id) {
   return `
     <div class="event-ticket-page${event.id > 1 ? ' event-ticket-page--below-dash' : ''}" style="--event-accent:${event.accent};">
       <header class="event-ticket-header">
-        <div class="event-ticket-brand"><span class="brand-dot"></span> AI COP / EVENTS</div>
-        <div class="event-ticket-index">${event.number} / 05</div>
+        <div class="event-ticket-brand"><span class="brand-dot"></span> AICon / EVENTS</div>
+        <div class="event-ticket-index">${event.number} / 04</div>
       </header>
 
       <main class="event-ticket-shell">
@@ -29,7 +29,7 @@ export function renderEventPage(id) {
             <div class="ticket-notch ticket-notch-left"></div>
             <div class="ticket-notch ticket-notch-right"></div>
             <span class="ticket-mark" aria-hidden="true">◒</span>
-            <span class="ticket-vertical-label">AI COP / EVENT TICKET</span>
+            <span class="ticket-vertical-label">AICon / EVENT TICKET</span>
             <span class="ticket-small-index">${event.number}</span>
           </article>
 
@@ -38,11 +38,13 @@ export function renderEventPage(id) {
             <span class="ticket-confirm-label">EVENT BRIEF</span>
             <h2>${event.shortName}</h2>
             <span class="ticket-big-number">${event.number}</span>
-            <div class="ticket-rule"></div>
-            <p>${event.details}</p>
             <a class="ticket-download" href="${event.file}" download>
-              <span>Download event brief</span>
-              <span class="download-icon" aria-hidden="true">↓</span>
+              <svg class="download-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download Event Brief</span>
             </a>
           </article>
         </section>
@@ -55,7 +57,7 @@ export function renderEventPage(id) {
 
         <div class="event-ticket-footer">
           <a class="event-back-link" href="#/events">&larr; All events</a>
-          <a class="event-register-link" href="#/register">Register for ${event.shortName} <span>&rarr;</span></a>
+          <a class="event-register-link" href="https://forms.cloud.microsoft/r/gxrsE4k10s" target="_blank" rel="noopener noreferrer">Register for ${event.shortName} <span>&rarr;</span></a>
         </div>
       </main>
     </div>

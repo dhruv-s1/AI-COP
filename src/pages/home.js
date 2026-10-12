@@ -8,49 +8,49 @@ import { initRiveElement } from '../components/rive-player.js';
 import { Application } from '@splinetool/runtime';
 
 const EVENTS_PREVIEW = [
-  { name: 'Panel Discussion',      color: '#F2F2F4', num: '01' },
-  { name: 'Ethical Conference',    color: '#FF6600', num: '02' },
-  { name: 'Hackathon',             color: '#A0A2A8', num: '03' },
-  { name: 'AI vs Human',           color: '#FF4500', num: '04' },
-  { name: 'Roundtable Conference', color: '#E5E5E7', num: '05' },
+  { name: 'Ethical Conference', color: '#FF6600', num: '01' },
+  { name: 'Hackathon', color: '#A0A2A8', num: '02' },
+  { name: 'AI Studio', color: '#FF4500', num: '03' },
 ];
 
+// ── THE 3 ARENAS (PLAYING CARDS) ──
+// All card headings, titles, dates, times, venues, and buttons are editable directly below:
 const BENTO_EVENTS = [
   {
     id: 1,
-    name: 'Panel Discussion',
-    accent: '#F2F2F4',
-    imageClass: 'panel-discussion-card',
-    darkImage: '/event-card-dark-mode/Panel discussion.png',
-    lightImage: '/event-card-light-mode/Panel discussion.png',
+    tag: 'EVENT 1',
+    name: 'Ethical Conference',
+    date: '4 Nov 2026',
+    time: '1:30 PM – 3:30 PM',
+    venue: 'School Library',
+    venueSub: 'Level 2',
+    accent: '#FF6600',
+    theme: 'white',
+    bgImage: '/event-cards-new/Ethical Conference.png',
   },
   {
     id: 2,
-    name: 'Ethical Conference',
-    accent: '#FF6600',
-    darkImage: '/event-card-dark-mode/Ethical Con.png',
-    lightImage: '/event-card-light-mode/Ethical Conferrence.png',
+    tag: 'EVENT 2',
+    name: 'Hackathon',
+    date: '5 Nov 2026',
+    time: '10:00 AM – 1:00 PM',
+    venue: 'Hall',
+    venueSub: 'Level 1',
+    accent: '#F2F2F4',
+    theme: 'orange',
+    bgImage: '/event-cards-new/Hackathon.png',
   },
   {
     id: 3,
-    name: 'Hackathon',
-    accent: '#F2F2F4',
-    darkImage: '/event-card-dark-mode/Hackathon.png',
-    lightImage: '/event-card-light-mode/Hackathon.png',
-  },
-  {
-    id: 4,
-    name: 'AI vs Human',
+    tag: 'EVENT 3',
+    name: 'AI Studio',
+    date: '4 Nov 2026',
+    time: '1:30 AM – 3:30 PM',
+    venue: 'Hall',
+    venueSub: 'Level 1',
     accent: '#FF6600',
-    darkImage: '/event-card-dark-mode/AI vs Human.png',
-    lightImage: '/event-card-light-mode/AI vs Human.png',
-  },
-  {
-    id: 5,
-    name: 'Roundtable Conference',
-    accent: '#F2F2F4',
-    darkImage: '/event-card-dark-mode/Roundtable.png',
-    lightImage: '/event-card-light-mode/Roundtable.png',
+    theme: 'white',
+    bgImage: '/event-cards-new/AI Studio.png',
   },
 ].map((event, index) => ({
   ...event,
@@ -60,27 +60,27 @@ const BENTO_EVENTS = [
 const NARRATIVE_FRAMES = [
   {
     img: '/frame1.jpg',
-    counter: '01 / 04',
+    counter: '01 / 03',
     heading: 'The World Is Changing.',
     body: 'Artificial Intelligence is no longer a concept from science fiction. It\'s here, it\'s accelerating, and it\'s reshaping every field — from medicine to art, from code to climate.',
   },
   {
     img: '/frame2.jpg',
-    counter: '02 / 04',
+    counter: '02 / 03',
     heading: 'Who Are We Becoming?',
     body: 'As AI grows more powerful, the defining question of our generation isn\'t whether machines can think — it\'s whether we remember what makes us irreplaceably human.',
   },
   {
     img: '/frame3.jpg',
-    counter: '03 / 04',
-    heading: 'AI COP Believes...',
+    counter: '03 / 03',
+    heading: 'AICon Believes...',
     body: 'Technology should amplify human identity, not replace it. The best AI doesn\'t erase your creativity or voice — it turns up the volume on what makes you uniquely you.',
   },
   {
     img: '/frame4.jpg',
-    counter: '04 / 04',
-    heading: '5 Events. 1 Mission.',
-    body: 'Five arenas. Five disciplines. One common thread: using AI as a tool for amplification, not automation. Choose your arena. Make your mark.',
+    counter: '03 / 03',
+    heading: '3 Events. 1 Mission.',
+    body: 'Three arenas. Three disciplines. One common thread: using AI as a tool for amplification, not automation. Choose your arena. Make your mark.',
   },
 ];
 
@@ -109,7 +109,7 @@ export function renderHome() {
           <div class="hero-text-eye-container">
             <div class="hero-eye-stage">
               <h1 class="eye-title eye-title-left hero-title-clean">AI</h1>
-              <h1 class="eye-title eye-title-right hero-title-clean">COP</h1>
+              <h1 class="eye-title eye-title-right hero-title-clean">CON</h1>
 
               <div class="hero-eye-anchor" id="hero-eye-anchor"></div>
               <!-- Opaque Keyed Eye Canvas locked INSIDE hero-eye-stage with text -->
@@ -118,7 +118,7 @@ export function renderHome() {
 
             <div class="hero-cta hero-cta-eye">
               <a href="#/events" class="btn-neo-primary">Explore Events</a>
-              <a href="#/register" class="btn-neo-outline">Register Now</a>
+              <a href="https://forms.cloud.microsoft/r/gxrsE4k10s" target="_blank" rel="noopener noreferrer" class="btn-neo-outline">Register Now</a>
             </div>
           </div>
         </div>
@@ -175,16 +175,58 @@ export function renderHome() {
       <section class="events-overview" id="events-deck-section">
         <div class="section-header text-center">
           <span class="eyebrow">The Competition</span>
-          <h2 class="section-title text-center">The 5 Arenas</h2>
-          <p class="section-subtitle">Five disciplines. One stage. Pick yours.</p>
+          <h2 class="section-title text-center">The 3 Arenas</h2>
+          <p class="section-subtitle">Three disciplines. One stage. Pick yours.</p>
         </div>
         <div class="card-deck" id="card-deck">
           ${BENTO_EVENTS.map((ev, i) => `
-            <a class="playing-card${ev.imageClass ? ' ' + ev.imageClass : ''}" data-index="${i}" href="#/event/${ev.id}" style="--card-accent:${ev.accent}; --card-i:${i};">
+            <div class="playing-card${ev.imageClass ? ' ' + ev.imageClass : ''} event-card-theme-${ev.theme}" data-index="${i}" data-href="#/event/${ev.id}" style="--card-accent:${ev.accent}; --card-i:${i};" role="article" aria-label="${ev.name}">
               <div class="playing-card-inner">
-                <img class="event-card-image" src="${ev.darkImage}" data-dark-src="${ev.darkImage}" data-light-src="${ev.lightImage}" alt="${ev.name} event card" />
+                <img class="event-card-bg" src="${ev.bgImage}" alt="" aria-hidden="true" />
+                <div class="event-card-content">
+                  <div class="event-card-header">
+                    <span class="event-card-badge">${ev.tag}</span>
+                  </div>
+                  <div class="event-card-artwork-spacer" aria-hidden="true"></div>
+                  <div class="event-card-footer">
+                    <h3 class="event-card-title">${ev.name}</h3>
+                    <div class="event-card-divider" aria-hidden="true"></div>
+                    <div class="event-card-meta">
+                      <div class="event-card-meta-col event-card-meta-date">
+                        <svg class="event-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <div class="event-meta-text">
+                          <span class="meta-line-1">${ev.date}</span>
+                          <span class="meta-line-2">${ev.time}</span>
+                        </div>
+                      </div>
+                      <div class="event-card-meta-sep" aria-hidden="true"></div>
+                      <div class="event-card-meta-col event-card-meta-venue">
+                        <svg class="event-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                          <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <div class="event-meta-text">
+                          <span class="meta-line-1">${ev.venue}</span>
+                          <span class="meta-line-2">${ev.venueSub}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <a href="#/event/${ev.id}" class="event-card-btn" aria-label="View details for ${ev.name}">
+                      <span>View Details</span>
+                      <svg class="event-card-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </a>
+            </div>
           `).join('')}
         </div>
       </section>
@@ -196,7 +238,7 @@ export function renderHome() {
           <span class="eyebrow">Ready?</span>
           <h2 class="gradient-text">Shape the Future.</h2>
           <div id="rive-register-button" class="large-cta" aria-hidden="true">
-            <a href="#/register" class="btn-neo-primary btn-fallback">Register Your School →</a>
+            <a href="https://forms.cloud.microsoft/r/gxrsE4k10s" target="_blank" rel="noopener noreferrer" class="btn-neo-primary btn-fallback">Register Your School →</a>
           </div>
         </div>
       </section>
@@ -217,12 +259,12 @@ export function initHome() {
     const v = document.getElementById(id);
     if (v) {
       v.muted = true;
-      v.play().catch(() => {});
+      v.play().catch(() => { });
     }
   });
 
   // Architectural 3D Stage (Kinetic Fins + Center Pedestal + Camera Zoom)
-  const cleanupStage = isMobile ? () => {} : initHeroStage('hero-section', 'hero-stage-canvas');
+  const cleanupStage = isMobile ? () => { } : initHeroStage('hero-section', 'hero-stage-canvas');
 
   // Interactive Cable removed — replaced by simple theme toggle in navbar
 
@@ -230,10 +272,10 @@ export function initHome() {
   const cleanupCharacter = initHeroCharacter('hero-character-video', 'hero-character-canvas');
 
   // Scroll reveals
-  const cleanupScrollReveal = isMobile ? () => {} : initScrollReveal();
+  const cleanupScrollReveal = isMobile ? () => { } : initScrollReveal();
 
   // Cinematic image sequence
-  const cleanupSequence = isMobile ? () => {} : initImageSequence(
+  const cleanupSequence = isMobile ? () => { } : initImageSequence(
     'image-sequence-section',
     'sequence-canvas',
     'seq-loader',
@@ -243,16 +285,16 @@ export function initHome() {
   // Scroll-docked Eye AI Assistant Chatbot
   const cleanupEyeBot = initEyeBot();
 
-  const cleanupSpline = isMobile ? () => {} : initSplineScene();
+  const cleanupSpline = isMobile ? () => { } : initSplineScene();
 
   // Card Deck: Scroll-triggered fan-in animation & hover interaction
-  const cleanupCardDeck = isMobile ? () => {} : initCardDeck();
+  const cleanupCardDeck = isMobile ? () => { } : initCardDeck();
 
   // Rive elements: register button and vision-card backgrounds
-  const cleanupRiveRegister = isMobile ? () => {} : initRiveElement('rive-register-button', { src: '/assets/glass-button.riv', autoplay: true });
-  const cleanupRiveBg1 = isMobile ? () => {} : initRiveElement('rive-bg-1', { src: '/assets/glass-bg-1.riv', autoplay: true });
-  const cleanupRiveBg2 = isMobile ? () => {} : initRiveElement('rive-bg-2', { src: '/assets/glass-bg-2.riv', autoplay: true });
-  const cleanupRiveBg3 = isMobile ? () => {} : initRiveElement('rive-bg-3', { src: '/assets/glass-bg-3.riv', autoplay: true });
+  const cleanupRiveRegister = isMobile ? () => { } : initRiveElement('rive-register-button', { src: '/assets/glass-button.riv', autoplay: true });
+  const cleanupRiveBg1 = isMobile ? () => { } : initRiveElement('rive-bg-1', { src: '/assets/glass-bg-1.riv', autoplay: true });
+  const cleanupRiveBg2 = isMobile ? () => { } : initRiveElement('rive-bg-2', { src: '/assets/glass-bg-2.riv', autoplay: true });
+  const cleanupRiveBg3 = isMobile ? () => { } : initRiveElement('rive-bg-3', { src: '/assets/glass-bg-3.riv', autoplay: true });
 
   window.__homeCleanup = () => {
     cleanupDeckImages?.();
@@ -276,7 +318,7 @@ function createSequenceLoader() {
   loader.id = 'home-sequence-loader';
   loader.className = 'site-loader is-active';
   loader.setAttribute('role', 'status');
-  loader.setAttribute('aria-label', 'Loading AI COP');
+  loader.setAttribute('aria-label', 'Loading AICon');
   loader.innerHTML = `
     <img class="site-loader-gif" src="/loading-animation.gif" alt="" aria-hidden="true" />
     <span class="site-loader-text" aria-hidden="true">Loading...</span>
@@ -306,10 +348,10 @@ function createSequenceLoader() {
 
 function initSplineScene() {
   const canvas = document.getElementById('canvas3d');
-  if (!canvas) return () => {};
+  if (!canvas) return () => { };
 
   const app = new Application(canvas);
-  app.load('https://prod.spline.design/Z8nDFLcSTeYWycZF/scene.splinecode').catch(() => {});
+  app.load('https://prod.spline.design/Z8nDFLcSTeYWycZF/scene.splinecode').catch(() => { });
 
   return () => {
     app.dispose?.();
@@ -318,7 +360,7 @@ function initSplineScene() {
 
 function initEventDeckImages() {
   const cards = Array.from(document.querySelectorAll('.event-card-image'));
-  if (cards.length === 0) return () => {};
+  if (cards.length === 0) return () => { };
 
   const applyTheme = () => {
     const isLight = document.body.classList.contains('light-mode');
@@ -341,7 +383,7 @@ function initEventDeckImages() {
 function initCardDeck() {
   const section = document.getElementById('events-deck-section');
   const deck = document.getElementById('card-deck');
-  if (!section || !deck) return () => {};
+  if (!section || !deck) return () => { };
 
   const cards = deck.querySelectorAll('.playing-card');
   let hasAnimated = false;
@@ -380,7 +422,8 @@ function initCardDeck() {
     card.addEventListener('mouseenter', onCardEnter);
     card.addEventListener('mouseleave', onCardLeave);
     card.addEventListener('click', (e) => {
-      const href = card.getAttribute('href');
+      if (e.target.closest('.event-card-btn')) return;
+      const href = card.dataset.href || card.getAttribute('href');
       if (!href) return;
       window.location.hash = href.replace('#', '');
     });

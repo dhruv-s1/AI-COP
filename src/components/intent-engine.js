@@ -195,7 +195,7 @@ class IntentEngine {
         confidence: 'HIGH',
         score: confidenceScore,
         answer: best.intent.answer,
-        quickChips: best.intent.quickChips || ["Registration", "5 Events", "Rulebook"],
+        quickChips: best.intent.quickChips || ["Registration", "4 Events", "Rulebook"],
         navAction: best.intent.navAction || null
       };
     } else if (confidenceScore >= 0.30) {
@@ -218,8 +218,8 @@ class IntentEngine {
     return {
       confidence: 'LOW',
       score: 0.0,
-      answer: "I couldn't confidently identify what you meant. I can help with **Registration**, **Rulebook**, **5 Events**, **Schedule**, **Eligibility**, **Venue**, and **Contact**.",
-      quickChips: ["Registration", "5 Events", "Rulebook", "Venue", "Schedule", "Contact"],
+      answer: "I couldn't confidently identify what you meant. I can help with **Registration**, **Rulebook**, **4 Events**, **Schedule**, **Eligibility**, **Venue**, and **Contact**.",
+      quickChips: ["Registration", "4 Events", "Rulebook", "Venue", "Schedule", "Contact"],
       navAction: { "type": "navigate", "route": "#/about", "label": "ℹ️ Visit Help & FAQ Section" }
     };
   }

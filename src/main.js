@@ -1,5 +1,5 @@
 /**
- * AI COP Website — Main Entry Point
+ * AICon Website — Main Entry Point
  * Initializes the SPA, navbar, footer, and routes
  */
 
@@ -10,7 +10,7 @@ import { createFooter, initFooter } from './components/footer.js';
 // Page imports
 import { renderHome, initHome } from './pages/home.js';
 import { renderEvents, initEvents } from './pages/events.js';
-import { renderRegister, initRegister } from './pages/register.js';
+
 import { renderEventPage, initEventPage } from './pages/event-page.js';
 
 /**
@@ -58,20 +58,7 @@ function initApp() {
     init: () => initEventPage(),
   });
   
-  addRoute('/event/4', {
-    render: () => renderEventPage(4),
-    init: () => initEventPage(),
-  });
-  
-  addRoute('/event/5', {
-    render: () => renderEventPage(5),
-    init: () => initEventPage(),
-  });
-  
-  addRoute('/register', {
-    render: () => renderRegister(),
-    init: () => initRegister(),
-  });
+
   
   // Start the router
   initRouter();

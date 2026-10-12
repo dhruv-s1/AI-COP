@@ -27,8 +27,8 @@
       "patterns": [
         "hi", "hello", "hey", "greetings", "good morning", "good afternoon", "good evening", "sup", "yo", "hi there", "hello assistant"
       ],
-      "answer": "👋 Hello! I am your AI COP Website Assistant. How can I help you explore the competition, registration, schedule, or rules today?",
-      "quickChips": ["Registration", "5 Events", "Rulebook", "Schedule"],
+      "answer": "👋 Hello! I am your AICon Website Assistant. How can I help you explore the competition, registration, schedule, or rules today?",
+      "quickChips": ["Registration", "4 Events", "Rulebook", "Schedule"],
       "navAction": null
     },
     {
@@ -36,8 +36,8 @@
       "patterns": [
         "bye", "goodbye", "see ya", "thanks bye", "exit", "close", "have a good day", "cya"
       ],
-      "answer": "👋 Goodbye! Best of luck with your preparation for AI COP. I'm always here if you need help navigating!",
-      "quickChips": ["Registration", "5 Events"],
+      "answer": "👋 Goodbye! Best of luck with your preparation for AICon. I'm always here if you need help navigating!",
+      "quickChips": ["Registration", "4 Events"],
       "navAction": null
     },
     {
@@ -52,12 +52,12 @@
     {
       "id": "registration",
       "patterns": [
-        "how do i register", "where can i apply", "how do i participate", "i want to join ai cop", "can my school enter",
+        "how do i register", "where can i apply", "how do i participate", "i want to join aicon", "can my school enter",
         "registration", "sign up", "how to join", "enroll", "registration process", "apply for competition", "entry form"
       ],
       "answer": "📝 **Registration**: Registration is open for student teams! Click below to open the registration form directly.",
       "quickChips": ["Rulebook", "Team Size", "Free Cost", "Venue"],
-      "navAction": { "type": "navigate", "route": "#/register", "label": "🚀 Go to Registration Page" }
+      "navAction": { "type": "url", "url": "https://forms.cloud.microsoft/r/gxrsE4k10s", "label": "🚀 Open Registration Form" }
     },
     {
       "id": "events_all",
@@ -65,54 +65,36 @@
         "what events are there", "list of competitions", "what can we compete in", "all categories", "what challenges exist",
         "tell me about the events", "event options", "disciplines"
       ],
-      "answer": "🏆 **5 Flagship Events**: The AI Canvas (Art), Code Forge (Hackathon), Data Odyssey (Data Science), Ethical Arena (Debate), and Future Vision (Pitching).",
-      "quickChips": ["The AI Canvas", "Code Forge", "Data Odyssey", "Ethical Arena", "Future Vision"],
+      "answer": "🏆 **3 Flagship Events**: Ethical Conference (Case Study), Hackathon (Build Sprint), and AI Studio (Debate).",
+      "quickChips": ["Ethical Conference", "Hackathon", "AI Studio"],
       "navAction": { "type": "navigate", "route": "#/events", "label": "🎨 Explore All Events" }
     },
     {
-      "id": "event_canvas",
+      "id": "event_ethical_conference",
       "patterns": [
-        "tell me about the ai canvas", "art competition", "generative art challenge", "prompt engineering event", "drawing contest", "canvas details"
+        "tell me about the ethical conference", "ethical conference details", "case study event", "ethics conference"
       ],
-      "answer": "🎨 **The AI Canvas**: A generative art and prompt engineering challenge where teams craft visual masterpieces using AI image tools based on a secret event-day theme.",
-      "quickChips": ["Canvas Rules", "Register", "All Events"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "🎨 View Canvas Details" }
+      "answer": "⚖️ **Ethical Conference**: A focused conference where teams examine bias, privacy, power, and the human consequences of intelligent systems through case studies and presentations.",
+      "quickChips": ["Register", "All Events"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "⚖️ View Ethical Conference" }
     },
     {
-      "id": "event_code_forge",
+      "id": "event_hackathon",
       "patterns": [
-        "what is code forge", "coding competition", "hackathon details", "programming challenge", "developer event", "software contest"
+        "what is the hackathon", "hackathon details", "build sprint", "programming challenge", "coding event"
       ],
-      "answer": "⚡ **Code Forge**: A high-intensity coding hackathon where student developers use AI coding copilots to build functional applications under time pressure.",
-      "quickChips": ["Coding Rules", "Register", "All Events"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "⚡ View Code Forge Details" }
+      "answer": "⚡ **Hackathon**: A fast-moving 3-hour build sprint where teams use AI tools to turn a real-world problem into a working prototype.",
+      "quickChips": ["Register", "All Events"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "⚡ View Hackathon Details" }
     },
     {
-      "id": "event_data_odyssey",
+      "id": "event_ai_studio",
       "patterns": [
-        "explain data odyssey", "data science event", "dataset challenge", "machine learning competition", "analytics track", "data sprint"
+        "what is ai studio", "debate details", "ai debate", "machine intelligence debate"
       ],
-      "answer": "🔭 **Data Odyssey**: A data science sprint where teams clean raw datasets, discover trends, train predictive machine learning models, and present insights.",
-      "quickChips": ["Data Rules", "Register", "All Events"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "🔭 View Data Odyssey" }
-    },
-    {
-      "id": "event_ethical_arena",
-      "patterns": [
-        "what is ethical arena", "ethics debate", "ai safety competition", "debate challenge", "morality track", "philosophy debate"
-      ],
-      "answer": "⚖️ **Ethical Arena**: A parliamentary debate competition tackling critical AI dilemmas including safety, bias, copyright, autonomous systems, and human identity.",
-      "quickChips": ["Debate Rules", "Register", "All Events"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "⚖️ View Ethical Arena" }
-    },
-    {
-      "id": "event_future_vision",
-      "patterns": [
-        "details on future vision", "pitching competition", "startup challenge", "innovation pitch", "sdg project", "grand solution pitch"
-      ],
-      "answer": "🚀 **Future Vision**: A startup-style pitch event where teams design and present AI solutions addressing real-world UN Sustainable Development Goals.",
-      "quickChips": ["Pitch Rules", "Register", "All Events"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "🚀 View Future Vision" }
+      "answer": "🗣️ **AI Studio**: A debate and performance challenge exploring what machines can do, what humans bring, and where the line keeps moving.",
+      "quickChips": ["Register", "All Events"],
+      "navAction": { "type": "navigate", "route": "#/events", "label": "🗣️ View AI Studio" }
     },
     {
       "id": "rulebook",
@@ -129,7 +111,7 @@
         "host", "hosting", "hosted by", "host school", "who is hosting", "who hosts", "which school is hosting",
         "where is the event hosted", "event location", "venue address", "where is gems school", "school location", "school map", "map", "directions", "dubai venue", "how to get to venue", "where is it"
       ],
-      "answer": "🏫 **Host School & Venue**: AI COP is proudly hosted by **GEMS Our Own Indian School, Dubai** (Al Quoz 1, Dubai, UAE).",
+      "answer": "🏫 **Host School & Venue**: AICon is proudly hosted by **GEMS Our Own Indian School, Dubai** (Al Quoz 1, Dubai, UAE).",
       "quickChips": ["School Website", "Schedule", "Registration"],
       "navAction": { "type": "url", "url": "https://maps.app.goo.gl/LP9qMhsvuQrmXQzVA", "label": "📍 View Map" }
     },
@@ -138,9 +120,9 @@
       "patterns": [
         "how much does it cost", "is registration free", "entry fee", "ticket price", "is there a charge", "payment details"
       ],
-      "answer": "🎉 **100% Free**: Participation in AI COP is completely free for all registered school teams!",
+      "answer": "🎉 **100% Free**: Participation in AICon is completely free for all registered school teams!",
       "quickChips": ["Register", "Eligibility", "Venue"],
-      "navAction": { "type": "navigate", "route": "#/register", "label": "📝 Register Now for Free" }
+      "navAction": { "type": "url", "url": "https://forms.cloud.microsoft/r/gxrsE4k10s", "label": "📝 Register Now for Free" }
     },
     {
       "id": "team_eligibility",
@@ -149,7 +131,7 @@
       ],
       "answer": "🎓 **Eligibility & Teams**: Open to high school students (Grades 8–12). Teams consist of 2 to 4 members from the same school delegation.",
       "quickChips": ["Registration", "Rulebook", "Cost"],
-      "navAction": { "type": "navigate", "route": "#/register", "label": "👥 Register Your Team" }
+      "navAction": { "type": "url", "url": "https://forms.cloud.microsoft/r/gxrsE4k10s", "label": "👥 Register Your Team" }
     },
     {
       "id": "schedule",
@@ -157,16 +139,16 @@
         "when is the event", "event date", "timeline", "when does it start", "schedule details", "program agenda"
       ],
       "answer": "📅 **Schedule**: Competition dates and timeline milestones will be communicated to all registered school delegations via email.",
-      "quickChips": ["Registration", "Venue", "5 Events"],
+      "quickChips": ["Registration", "Venue", "4 Events"],
       "navAction": { "type": "scroll", "target": "#image-sequence-section", "label": "📅 View Timeline Section" }
     },
     {
       "id": "theme",
       "patterns": [
-        "what is the theme of ai cop", "mission statement", "motto", "philosophy", "what does ai cop stand for"
+        "what is the theme of aicon", "mission statement", "motto", "philosophy", "what does aicon stand for"
       ],
       "answer": "💡 **Theme**: *\"Technology should amplify human identity, not replace it.\"* We promote AI as a tool for creative human amplification.",
-      "quickChips": ["5 Events", "Registration", "Venue"],
+      "quickChips": ["4 Events", "Registration", "Venue"],
       "navAction": { "type": "navigate", "route": "#/about", "label": "💡 Read Our Mission" }
     },
     {
@@ -175,7 +157,7 @@
         "what are the prizes", "awards info", "trophy details", "certificates", "what do winners get"
       ],
       "answer": "🏆 **Prizes**: Winners receive Overall School Trophies, medals, tech vouchers, and official verified Certificates of Excellence!",
-      "quickChips": ["5 Events", "Register", "Rulebook"],
+      "quickChips": ["4 Events", "Register", "Rulebook"],
       "navAction": { "type": "navigate", "route": "#/about", "label": "🏆 View Awards Info" }
     },
     {
@@ -183,7 +165,7 @@
       "patterns": [
         "how to contact organizers", "email address", "support team", "helpdesk", "reach committee"
       ],
-      "answer": "📧 **Contact**: Contact the AI COP Student Committee at GEMS Our Own Indian School via your teacher advisor or the contact section.",
+      "answer": "📧 **Contact**: Contact the AICon Student Committee at GEMS Our Own Indian School via your teacher advisor or the contact section.",
       "quickChips": ["Venue", "Registration", "FAQ"],
       "navAction": { "type": "navigate", "route": "#/about", "label": "📧 Contact Support" }
     }

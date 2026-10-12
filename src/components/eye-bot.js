@@ -1,6 +1,6 @@
 /**
  * Eye Bot & AI Assistant UI Controller
- * Mistral-powered AI COP website assistant.
+ * Groq-powered AICon website assistant.
  * Uses intent-engine.js (Fuzzy Matching, Levenshtein Typo Tolerance, Synonyms, Context Memory, Confidence System).
  * Handles Navigation Actions, Typing Animations, Quick Action Chips, and LocalStorage Persistence.
  */
@@ -38,7 +38,7 @@ export function initEyeBot() {
         <div class="chat-header-info">
           <span class="chat-status-dot"></span>
           <div>
-            <div class="chat-title">AI COP Assistant</div>
+            <div class="chat-title">AICon Assistant</div>
           </div>
         </div>
         <button class="chat-close-btn" id="chat-close-btn" aria-label="Close Chat">&times;</button>
@@ -89,7 +89,7 @@ export function initEyeBot() {
         if (Array.isArray(history) && history.length > 0) {
           messagesEl.innerHTML = '';
           history.forEach(msg => renderMessageBubble(msg.text, msg.isUser, getLocationAction(msg.text, msg.navAction), false));
-          renderQuickChips(history[history.length - 1].quickChips || ["Registration", "5 Events", "Rulebook"]);
+          renderQuickChips(history[history.length - 1].quickChips || ["Registration", "4 Events", "Rulebook"]);
           messagesEl.scrollTop = messagesEl.scrollHeight;
           return;
         }
@@ -100,8 +100,8 @@ export function initEyeBot() {
 
     // Default welcome message if no history
     messagesEl.innerHTML = '';
-    renderMessageBubble("👋 Hi! I'm your **AI COP Website Assistant**. How can I help you explore the competition, registration, schedule, or rules today?", false, null, false);
-    renderQuickChips(["Registration", "5 Events", "Rulebook", "Venue"]);
+    renderMessageBubble("👋 Hi! I'm your **AICon Website Assistant**. How can I help you explore the competition, registration, schedule, or rules today?", false, null, false);
+    renderQuickChips(["Registration", "4 Events", "Rulebook", "Venue"]);
   }
 
   function saveHistory(text, isUser, navAction = null, quickChips = []) {

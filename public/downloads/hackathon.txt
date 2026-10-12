@@ -1,1 +1,1 @@
-AI COP EVENT BRIEF 03\nHACKATHON\n\nFormat: 3-hour build sprint and demo\nTeam: 2-4 members\n\nTurn a real-world problem into a working prototype with AI-assisted tools.\n\nDocument your process and let human judgment lead every decision.\n
+AICon EVENT BRIEF 03\nHACKATHON\n\nFormat: 3-hour build sprint and demo\nTeam: 2-4 members\n\nTurn a real-world problem into a working prototype with AI-assisted tools.\n\nDocument your process and let human judgment lead every decision.\n

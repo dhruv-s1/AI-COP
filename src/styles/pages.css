@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Pages — AI COP
+   Pages — AICon
    ========================================================================== */
 
 /* ── App Shell ── */
@@ -437,7 +437,7 @@ body.light-mode .hero-laptop-element.plugged .mode-status {
   color: #00B862 !important;
 }
 
-/* Eye Graphic Layout — Top-Left AI & Bottom-Right COP overlapping behind Eye */
+/* Eye Graphic Layout — Top-Left AI & Bottom-Right CON overlapping behind Eye */
 .hero-content,
 .hero-content-eye-layout {
   position: relative;
@@ -498,7 +498,7 @@ body.light-mode .hero-laptop-element.plugged .mode-status {
   z-index: 5;
 }
 
-/* COP on Bottom-Right */
+/* CON on Bottom-Right */
 .eye-title-right {
   position: absolute;
   bottom: 12%;
@@ -1493,8 +1493,50 @@ body:not(.light-mode) .event-selector-card:nth-child(3n) .event-selector-inner {
 .ticket-big-number { display: block; margin: 0.2rem 0 -0.4rem; color: rgba(9,18,20,0.14); font: 900 8rem/0.85 var(--font-body); letter-spacing: -0.12em; }
 .ticket-rule { border-top: 1px solid rgba(9,18,20,0.7); }
 .event-ticket-confirm p { margin: 0.8rem 0 1rem; color: rgba(9,18,20,0.75); font: 0.62rem/1.45 var(--font-mono); }
-.ticket-download { display: flex; justify-content: space-between; align-items: center; padding-top: 0.7rem; border-top: 1px solid rgba(9,18,20,0.2); color: #091214; font: 0.63rem var(--font-mono); text-transform: uppercase; }
-.ticket-download:hover { color: #091214; }
+.ticket-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.85rem 1.4rem;
+  border: none;
+  border-radius: 12px;
+  background: #091214;
+  color: var(--event-accent);
+  font: 700 0.82rem/1 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.ticket-download:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: #0d1e22;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  color: var(--event-accent);
+}
+.ticket-download:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.download-btn-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.ticket-download:hover .download-btn-icon {
+  transform: translateY(2px);
+  animation: downloadBounce 0.6s ease infinite;
+}
+@keyframes downloadBounce {
+  0%, 100% { transform: translateY(2px); }
+  50% { transform: translateY(5px); }
+}
 .event-ticket-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 2.5rem; border-top: 1px solid rgba(244,245,243,0.28); border-bottom: 1px solid rgba(244,245,243,0.28); }
 .event-ticket-meta div { display: grid; gap: 0.5rem; padding: 1rem 1.2rem; border-right: 1px solid rgba(244,245,243,0.18); }
 .event-ticket-meta div:last-child { border-right: 0; }
@@ -1539,7 +1581,7 @@ body.light-mode .event-ticket-confirm { color: #091214; }
 .events-index-header h1 { margin: 1.2rem 0; color: #f4f5f3; font: 500 clamp(4rem, 10vw, 8rem)/0.82 var(--font-body); letter-spacing: -0.08em; }
 .events-index-header h1 em { color: var(--accent-orange); font-style: normal; }
 .events-index-header p { color: rgba(244,245,243,0.65); font: 0.8rem var(--font-mono); }
-.events-index-grid { display: grid; grid-template-columns: repeat(5, 1fr); width: calc(100% + 100px); margin-left: -50px; gap: 0.55rem; }
+.events-index-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 0 auto; gap: 0.55rem; }
 .event-index-card { min-height: 440px; position: relative; display: flex; overflow: hidden; border: 1px solid rgba(244,245,243,0.4); border-radius: 16px; background: #0a1517; transition: transform 0.45s var(--ease-out), border-color 0.45s ease; }
 .event-index-card:hover { transform: translateY(-0.7rem); border-color: var(--accent-orange); }
 .event-index-number { position: relative; z-index: 2; font: 0.7rem var(--font-mono); }
@@ -1690,7 +1732,7 @@ body.light-mode .event-ticket-confirm { color: #091214; }
   .eye-title-left { margin-top: 0; }
   .eye-title-right { margin-top: 0.05em; }
 
-  /* The eye starts between AI/COP, then uses the shared scroll-to-helper transition. */
+  /* The eye starts between AI/CON, then uses the shared scroll-to-helper transition. */
   #hero-character-canvas {
     position: absolute;
     top: 47%;

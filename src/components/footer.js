@@ -91,7 +91,7 @@ export function createFooter() {
                             <path d="M244.78,41.4h-6.25V30.13h1.58V40h4.67Z"/>
                         </svg>
                     </a>
-                    <h3 class="footer-title">AI COP</h3>
+                    <h3 class="footer-title">AICon</h3>
                     <p class="footer-tagline">Amplifying human identity with AI tools responsibly.</p>
                 </div>
                 
@@ -100,7 +100,7 @@ export function createFooter() {
                         <h4>Quick Links</h4>
                         <a href="#/">Home</a>
                         <a href="#/events">Events</a>
-                        <a href="#/register">Register</a>
+                        <a href="https://forms.cloud.microsoft/r/gxrsE4k10s" target="_blank" rel="noopener noreferrer">Register</a>
                     </div>
                     
                     <div class="footer-column">
@@ -131,7 +131,7 @@ export function createFooter() {
             <div class="footer-bottom">
                 <p>&copy; ${currentYear} GEMS Our Own Indian School. All rights reserved.</p>
                 <div class="powered-by">
-                    <span class="badge">Powered by AI COP</span>
+                    <span class="badge">Powered by AICon</span>
                 </div>
             </div>
         </footer>
