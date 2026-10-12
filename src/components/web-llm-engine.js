@@ -16,7 +16,7 @@ Key Information:
   1. Ethical Conference
   2. Hackathon
   3. AI Studio
-- Registration: 100% Free for student teams (2 to 4 members per team).
+- Registration: 100% Free. Team sizes vary: Ethical Conference (individual), AI Studio (3 members), Hackathon (4 members).
 Be friendly, helpful, concise, and structured. Use Markdown formatting when helpful.`;
 
 let mlcEngine = null;

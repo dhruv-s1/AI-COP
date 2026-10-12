@@ -129,7 +129,7 @@
       "patterns": [
         "who is eligible", "what grade can join", "team size requirements", "how many students per team", "can i compete alone", "school requirements"
       ],
-      "answer": "🎓 **Eligibility & Teams**: Open to high school students (Grades 8–12). Teams consist of 2 to 4 members from the same school delegation.",
+      "answer": "🎓 **Eligibility & Teams**: Open to high school students (Grades 8–12). Team sizes vary by event: Ethical Conference is individual, AI Studio has teams of 3, and Hackathon has teams of 4.",
       "quickChips": ["Registration", "Rulebook", "Cost"],
       "navAction": { "type": "url", "url": "https://forms.cloud.microsoft/r/gxrsE4k10s", "label": "👥 Register Your Team" }
     },
