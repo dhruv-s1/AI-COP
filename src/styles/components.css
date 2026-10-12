@@ -1505,7 +1505,7 @@ body.light-mode .social-links a:hover {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 0;
+  gap: 1.5rem;
   position: relative;
   min-height: 560px;
   padding: 2.5rem 0 1rem;
@@ -1546,40 +1546,23 @@ body.light-mode .social-links a:hover {
   animation-delay: calc(var(--card-i) * 0.12s);
 }
 
-/* Card spread positions — fanned arc */
+/* Card spread positions — fanned arc (3 cards) */
 .deck-fanned .playing-card:nth-child(1) {
-  --card-rot: -16deg;
-  --card-ty: 22px;
-  margin-left: 0;
-  z-index: 5;
+  --card-rot: -6deg;
+  --card-ty: 12px;
+  z-index: 3;
 }
 
 .deck-fanned .playing-card:nth-child(2) {
-  --card-rot: -8deg;
-  --card-ty: -2px;
-  margin-left: -104px;
+  --card-rot: 0deg;
+  --card-ty: -8px;
   z-index: 4;
 }
 
 .deck-fanned .playing-card:nth-child(3) {
-  --card-rot: 0deg;
-  --card-ty: -18px;
-  margin-left: -104px;
+  --card-rot: 6deg;
+  --card-ty: 12px;
   z-index: 3;
-}
-
-.deck-fanned .playing-card:nth-child(4) {
-  --card-rot: 8deg;
-  --card-ty: -2px;
-  margin-left: -104px;
-  z-index: 2;
-}
-
-.deck-fanned .playing-card:nth-child(5) {
-  --card-rot: 16deg;
-  --card-ty: 22px;
-  margin-left: -104px;
-  z-index: 1;
 }
 
 @keyframes cardFanIn {

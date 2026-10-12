@@ -1581,16 +1581,33 @@ body.light-mode .event-ticket-confirm { color: #091214; }
 .events-index-header h1 { margin: 1.2rem 0; color: #f4f5f3; font: 500 clamp(4rem, 10vw, 8rem)/0.82 var(--font-body); letter-spacing: -0.08em; }
 .events-index-header h1 em { color: var(--accent-orange); font-style: normal; }
 .events-index-header p { color: rgba(244,245,243,0.65); font: 0.8rem var(--font-mono); }
-.events-index-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 0 auto; gap: 0.55rem; }
-.event-index-card { min-height: 440px; position: relative; display: flex; overflow: hidden; border: 1px solid rgba(244,245,243,0.4); border-radius: 16px; background: #0a1517; transition: transform 0.45s var(--ease-out), border-color 0.45s ease; }
-.event-index-card:hover { transform: translateY(-0.7rem); border-color: var(--accent-orange); }
-.event-index-number { position: relative; z-index: 2; font: 0.7rem var(--font-mono); }
-.event-index-image { position: absolute; inset: 0; background: var(--event-image) center/cover no-repeat; opacity: 1; transition: transform 0.7s var(--ease-out); }
-.event-index-card:hover .event-index-image { transform: scale(1.08); }
-.event-index-copy { position: relative; z-index: 2; }
-.event-index-copy span { color: rgba(244,245,243,0.58); font: 0.48rem var(--font-mono); }
-.event-index-copy h2 { min-height: 4.2rem; margin: 0.6rem 0 1.3rem; color: #f4f5f3; font: 700 1.25rem/1 var(--font-body); letter-spacing: -0.04em; }
-.event-index-copy b { color: var(--accent-orange); font: 0.6rem var(--font-mono); text-transform: uppercase; }
+.events-index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+/* Override playing-card deck behaviour for the flat events page layout */
+.events-page-card.playing-card {
+  width: 100%;
+  height: auto;
+  min-height: 480px;
+  flex-shrink: 1;
+  margin-left: 0 !important;
+  transform: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+  animation: none !important;
+  cursor: pointer;
+}
+.events-page-card .playing-card-inner {
+  height: 100%;
+}
+.events-page-card .event-card-bg {
+  border-radius: 18px;
+}
+
 
 @keyframes ticketFloat { 0%, 100% { transform: rotate(0deg) translateY(0); } 50% { transform: rotate(-1.5deg) translateY(-0.4rem); } }
 @keyframes ticketMarkSpin { from { transform: rotate(-28deg); } to { transform: rotate(332deg); } }
@@ -1902,7 +1919,7 @@ body.light-mode .event-ticket-confirm { color: #091214; }
   .events-index-page { padding: 2rem 1rem; }
   .events-index-header { padding: 2rem 0 2.5rem; }
   .events-index-header h1 { font-size: clamp(4rem, 19vw, 6rem); }
-  .events-index-grid { width: 100%; margin-left: 0; grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+  .events-index-grid { width: 100%; margin-left: 0; grid-template-columns: 1fr; gap: 1rem; }
   .event-index-card { min-height: 280px; padding: 0.8rem; }
   .event-index-copy h2 { min-height: 3.6rem; font-size: 1rem; }
   .event-index-copy span { font-size: 0.42rem; }
