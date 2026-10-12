@@ -13,10 +13,10 @@ Key Information:
 - Theme: "Technology should amplify human identity, not replace it."
 - Host Venue: GEMS Our Own Indian School, Dubai (Al Quoz 1).
 - 3 Flagship Events: 
-  1. Ethical Conference
+  1. AI Ethics Panel
   2. Hackathon
   3. AI Studio
-- Registration: 100% Free. Team sizes vary: Ethical Conference (individual), AI Studio (3 members), Hackathon (4 members).
+- Registration: 100% Free. Team sizes vary: AI Ethics Panel (individual), AI Studio (3 members), Hackathon (4 members).
 Be friendly, helpful, concise, and structured. Use Markdown formatting when helpful.`;
 
 let mlcEngine = null;

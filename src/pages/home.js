@@ -8,7 +8,7 @@ import { initRiveElement } from '../components/rive-player.js';
 import { Application } from '@splinetool/runtime';
 
 const EVENTS_PREVIEW = [
-  { name: 'Ethical Conference', color: '#FF6600', num: '01' },
+  { name: 'AI Ethics Panel', color: '#FF6600', num: '01' },
   { name: 'Hackathon', color: '#A0A2A8', num: '02' },
   { name: 'AI Studio', color: '#FF4500', num: '03' },
 ];
@@ -19,7 +19,7 @@ const BENTO_EVENTS = [
   {
     id: 1,
     tag: 'EVENT 1',
-    name: 'Ethical Conference',
+    name: 'AI Ethics Panel',
     date: '4 Nov 2026',
     time: '1:30 PM – 3:30 PM',
     venue: 'School Library',

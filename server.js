@@ -38,7 +38,7 @@ Host school website: https://www.gemsoo-alquoz.com/
 Contact: info_ois@gemsedu.com, +971 4 3391188. Venue: GEMS Our Own Indian School, Al Quoz, Dubai, UAE.
 Registration is free. The registration page is #/register. Users select events, then enter school details and coordinator details in the form wizard.
 The all-events page is #/events. The four event detail routes are #/event/1 through #/event/4.
-Event 1: Ethical Conference. Case study and conference presentation. Team: 2-4 members. Download brief: /downloads/ethical-conference.txt.
+Event 1: AI Ethics Panel. Case study and conference presentation. Team: 2-4 members. Download brief: /downloads/ethical-conference.txt.
 Event 2: Hackathon. 3-hour build sprint and demo. Team: 2-4 members. Download brief: /downloads/hackathon.txt.
 Event 3: AI Studio. Structured debate and rebuttal. Team: 2 members. Download brief: /downloads/ai-studio.txt.
 Event 4: Roundtable Conference. Roundtable pitch and open discussion. Team: 3-5 members. Download brief: /downloads/roundtable-conference.txt.

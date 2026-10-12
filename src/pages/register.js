@@ -2,9 +2,9 @@ import { initScrollReveal } from '../components/scroll-animation.js';
 import { createFormWizard, generateEventFields } from '../components/form-wizard.js';
 
 const EVENTS = [
-  { id: 'event1', name: 'Ethical Conference',    participantCount: Number(import.meta.env.VITE_ETHICAL_CONFERENCE_PARTICIPANTS), color: '#FF6600', icon: '◌' },
-  { id: 'event2', name: 'Hackathon',             participantCount: Number(import.meta.env.VITE_HACKATHON_PARTICIPANTS), color: '#A0A2A8', icon: '✦' },
-  { id: 'event3', name: 'AI Studio',           participantCount: Number(import.meta.env.VITE_AI_STUDIO_PARTICIPANTS), color: '#FF4500', icon: '◒' },
+  { id: 'event1', name: 'AI Ethics Panel', participantCount: Number(import.meta.env.VITE_ETHICAL_CONFERENCE_PARTICIPANTS), color: '#FF6600', icon: '◌' },
+  { id: 'event2', name: 'Hackathon', participantCount: Number(import.meta.env.VITE_HACKATHON_PARTICIPANTS), color: '#A0A2A8', icon: '✦' },
+  { id: 'event3', name: 'AI Studio', participantCount: Number(import.meta.env.VITE_AI_STUDIO_PARTICIPANTS), color: '#FF4500', icon: '◒' },
 ];
 
 const getParticipantCount = (event) => {
@@ -49,11 +49,11 @@ export function initRegister() {
   const schoolStep = {
     title: 'School Details',
     fields: [
-      { name: 'schoolName',       label: 'School Name',            type: 'text',  required: true },
-      { name: 'city',             label: 'City / Emirate',         type: 'text',  required: true },
-      { name: 'coordinatorName',  label: 'Coordinator Name',       type: 'text',  required: true },
-      { name: 'coordinatorEmail', label: 'Coordinator Email',      type: 'email', required: true },
-      { name: 'coordinatorPhone', label: 'Coordinator Phone',      type: 'tel',   required: true },
+      { name: 'schoolName', label: 'School Name', type: 'text', required: true },
+      { name: 'city', label: 'City / Emirate', type: 'text', required: true },
+      { name: 'coordinatorName', label: 'Coordinator Name', type: 'text', required: true },
+      { name: 'coordinatorEmail', label: 'Coordinator Email', type: 'email', required: true },
+      { name: 'coordinatorPhone', label: 'Coordinator Phone', type: 'tel', required: true },
     ],
   };
 

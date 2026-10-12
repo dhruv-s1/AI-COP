@@ -5,14 +5,14 @@ const EVENTS_PAGE_CARDS = [
   {
     id: 1,
     tag: 'EVENT 1',
-    name: 'Ethical Conference',
+    name: 'AI Ethics Panel',
     date: '4 Nov 2026',
     time: '1:30 PM – 3:30 PM',
     venue: 'School Library',
     venueSub: 'Level 2',
     accent: '#FF6600',
     theme: 'white',
-    bgImage: '/event-cards-new/Ethical Conference.png',
+    bgImage: '/event-cards-new/AI Ethics Panel.png',
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const EVENTS_PAGE_CARDS = [
 ];
 
 export function renderEvents() {
-    return `
+  return `
         <div class="events-index-page">
             <header class="events-index-header">
                 <h1>Choose your<br><em>event.</em></h1>
@@ -103,20 +103,20 @@ export function renderEvents() {
 }
 
 export function initEvents() {
-    const cleanupReveal = initScrollReveal();
+  const cleanupReveal = initScrollReveal();
 
-    // Card click navigation (same as homepage)
-    const cards = document.querySelectorAll('.events-page-card');
-    const onClick = (e) => {
-        if (e.target.closest('.event-card-btn')) return;
-        const card = e.currentTarget;
-        const href = card.dataset.href;
-        if (href) window.location.hash = href.replace('#', '');
-    };
-    cards.forEach(card => card.addEventListener('click', onClick));
+  // Card click navigation (same as homepage)
+  const cards = document.querySelectorAll('.events-page-card');
+  const onClick = (e) => {
+    if (e.target.closest('.event-card-btn')) return;
+    const card = e.currentTarget;
+    const href = card.dataset.href;
+    if (href) window.location.hash = href.replace('#', '');
+  };
+  cards.forEach(card => card.addEventListener('click', onClick));
 
-    return () => {
-        cleanupReveal?.();
-        cards.forEach(card => card.removeEventListener('click', onClick));
-    };
+  return () => {
+    cleanupReveal?.();
+    cards.forEach(card => card.removeEventListener('click', onClick));
+  };
 }

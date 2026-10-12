@@ -1,173 +1,583 @@
 {
   "synonyms": {
-    "join": ["register", "sign up", "apply", "enroll", "enter", "participate", "submission", "submit", "admission"],
-    "rules": ["rulebook", "guidelines", "regulations", "terms", "policies", "criteria", "requirements", "standards"],
-    "venue": ["location", "place", "where", "address", "school", "gems", "dubai", "map", "directions", "site"],
-    "cost": ["price", "fee", "free", "payment", "money", "ticket", "charge", "expense"],
-    "contact": ["email", "phone", "help", "support", "organizer", "reach", "inquire", "ask", "committee"],
-    "schedule": ["timeline", "date", "when", "time", "calendar", "day", "program", "agenda"],
-    "event": ["competition", "contest", "category", "arena", "challenge", "track", "discipline"],
-    "team": ["members", "size", "group", "squad", "partner", "solo", "individual", "students", "delegation"],
-    "host": ["venue", "location", "school", "gems", "dubai", "organizer", "hosting", "place", "address"]
+    "join": [
+      "register",
+      "sign up",
+      "apply",
+      "enroll",
+      "enter",
+      "participate",
+      "submission",
+      "submit",
+      "admission"
+    ],
+    "rules": [
+      "rulebook",
+      "guidelines",
+      "regulations",
+      "terms",
+      "policies",
+      "criteria",
+      "requirements",
+      "standards"
+    ],
+    "venue": [
+      "location",
+      "place",
+      "where",
+      "address",
+      "school",
+      "gems",
+      "dubai",
+      "map",
+      "directions",
+      "site"
+    ],
+    "cost": [
+      "price",
+      "fee",
+      "free",
+      "payment",
+      "money",
+      "ticket",
+      "charge",
+      "expense"
+    ],
+    "contact": [
+      "email",
+      "phone",
+      "help",
+      "support",
+      "organizer",
+      "reach",
+      "inquire",
+      "ask",
+      "committee"
+    ],
+    "schedule": [
+      "timeline",
+      "date",
+      "when",
+      "time",
+      "calendar",
+      "day",
+      "program",
+      "agenda"
+    ],
+    "event": [
+      "competition",
+      "contest",
+      "category",
+      "arena",
+      "challenge",
+      "track",
+      "discipline"
+    ],
+    "team": [
+      "members",
+      "size",
+      "group",
+      "squad",
+      "partner",
+      "solo",
+      "individual",
+      "students",
+      "delegation"
+    ],
+    "host": [
+      "venue",
+      "location",
+      "school",
+      "gems",
+      "dubai",
+      "organizer",
+      "hosting",
+      "place",
+      "address"
+    ]
   },
   "stopWords": [
-    "a", "an", "the", "and", "or", "but", "about", "above", "after", "again", "against", "all", "am", "an", "and",
-    "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both",
-    "can", "could", "did", "do", "does", "doing", "don't", "down", "during", "each", "few", "for", "from", "further",
-    "had", "has", "have", "having", "he", "her", "here", "him", "his", "how", "i", "if", "in", "into", "is", "isn't",
-    "it", "its", "just", "me", "more", "most", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only",
-    "or", "other", "our", "ours", "out", "over", "own", "same", "she", "should", "so", "some", "such", "than", "that",
-    "their", "them", "then", "there", "these", "they", "this", "those", "through", "to", "too", "under", "until",
-    "up", "very", "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom", "why", "with", "would",
-    "you", "your", "yours"
+    "a",
+    "an",
+    "the",
+    "and",
+    "or",
+    "but",
+    "about",
+    "above",
+    "after",
+    "again",
+    "against",
+    "all",
+    "am",
+    "an",
+    "and",
+    "any",
+    "are",
+    "aren't",
+    "as",
+    "at",
+    "be",
+    "because",
+    "been",
+    "before",
+    "being",
+    "below",
+    "between",
+    "both",
+    "can",
+    "could",
+    "did",
+    "do",
+    "does",
+    "doing",
+    "don't",
+    "down",
+    "during",
+    "each",
+    "few",
+    "for",
+    "from",
+    "further",
+    "had",
+    "has",
+    "have",
+    "having",
+    "he",
+    "her",
+    "here",
+    "him",
+    "his",
+    "how",
+    "i",
+    "if",
+    "in",
+    "into",
+    "is",
+    "isn't",
+    "it",
+    "its",
+    "just",
+    "me",
+    "more",
+    "most",
+    "my",
+    "myself",
+    "no",
+    "nor",
+    "not",
+    "of",
+    "off",
+    "on",
+    "once",
+    "only",
+    "or",
+    "other",
+    "our",
+    "ours",
+    "out",
+    "over",
+    "own",
+    "same",
+    "she",
+    "should",
+    "so",
+    "some",
+    "such",
+    "than",
+    "that",
+    "their",
+    "them",
+    "then",
+    "there",
+    "these",
+    "they",
+    "this",
+    "those",
+    "through",
+    "to",
+    "too",
+    "under",
+    "until",
+    "up",
+    "very",
+    "was",
+    "we",
+    "were",
+    "what",
+    "when",
+    "where",
+    "which",
+    "while",
+    "who",
+    "whom",
+    "why",
+    "with",
+    "would",
+    "you",
+    "your",
+    "yours"
   ],
   "intents": [
     {
       "id": "greetings",
       "patterns": [
-        "hi", "hello", "hey", "greetings", "good morning", "good afternoon", "good evening", "sup", "yo", "hi there", "hello assistant"
+        "hi",
+        "hello",
+        "hey",
+        "greetings",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "sup",
+        "yo",
+        "hi there",
+        "hello assistant"
       ],
       "answer": "👋 Hello! I am your AICon Website Assistant. How can I help you explore the competition, registration, schedule, or rules today?",
-      "quickChips": ["Registration", "4 Events", "Rulebook", "Schedule"],
+      "quickChips": [
+        "Registration",
+        "4 Events",
+        "Rulebook",
+        "Schedule"
+      ],
       "navAction": null
     },
     {
       "id": "farewell",
       "patterns": [
-        "bye", "goodbye", "see ya", "thanks bye", "exit", "close", "have a good day", "cya"
+        "bye",
+        "goodbye",
+        "see ya",
+        "thanks bye",
+        "exit",
+        "close",
+        "have a good day",
+        "cya"
       ],
       "answer": "👋 Goodbye! Best of luck with your preparation for AICon. I'm always here if you need help navigating!",
-      "quickChips": ["Registration", "4 Events"],
+      "quickChips": [
+        "Registration",
+        "4 Events"
+      ],
       "navAction": null
     },
     {
       "id": "gratitude",
       "patterns": [
-        "thanks", "thank you", "awesome", "great", "helpful", "appreciate it", "thank you very much", "nice"
+        "thanks",
+        "thank you",
+        "awesome",
+        "great",
+        "helpful",
+        "appreciate it",
+        "thank you very much",
+        "nice"
       ],
       "answer": "😊 You're very welcome! Let me know if you need anything else regarding registration, rules, or events.",
-      "quickChips": ["Registration", "Schedule", "Venue"],
+      "quickChips": [
+        "Registration",
+        "Schedule",
+        "Venue"
+      ],
       "navAction": null
     },
     {
       "id": "registration",
       "patterns": [
-        "how do i register", "where can i apply", "how do i participate", "i want to join aicon", "can my school enter",
-        "registration", "sign up", "how to join", "enroll", "registration process", "apply for competition", "entry form"
+        "how do i register",
+        "where can i apply",
+        "how do i participate",
+        "i want to join aicon",
+        "can my school enter",
+        "registration",
+        "sign up",
+        "how to join",
+        "enroll",
+        "registration process",
+        "apply for competition",
+        "entry form"
       ],
       "answer": "📝 **Registration**: Registration is open for student teams! Click below to open the registration form directly.",
-      "quickChips": ["Rulebook", "Team Size", "Free Cost", "Venue"],
-      "navAction": { "type": "url", "url": "https://forms.cloud.microsoft/r/gxrsE4k10s", "label": "🚀 Open Registration Form" }
+      "quickChips": [
+        "Rulebook",
+        "Team Size",
+        "Free Cost",
+        "Venue"
+      ],
+      "navAction": {
+        "type": "url",
+        "url": "https://forms.cloud.microsoft/r/gxrsE4k10s",
+        "label": "🚀 Open Registration Form"
+      }
     },
     {
       "id": "events_all",
       "patterns": [
-        "what events are there", "list of competitions", "what can we compete in", "all categories", "what challenges exist",
-        "tell me about the events", "event options", "disciplines"
+        "what events are there",
+        "list of competitions",
+        "what can we compete in",
+        "all categories",
+        "what challenges exist",
+        "tell me about the events",
+        "event options",
+        "disciplines"
       ],
-      "answer": "🏆 **3 Flagship Events**: Ethical Conference (Case Study), Hackathon (Build Sprint), and AI Studio (Debate).",
-      "quickChips": ["Ethical Conference", "Hackathon", "AI Studio"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "🎨 Explore All Events" }
+      "answer": "🏆 **3 Flagship Events**: AI Ethics Panel (Case Study), Hackathon (Build Sprint), and AI Studio (Debate).",
+      "quickChips": [
+        "AI Ethics Panel",
+        "Hackathon",
+        "AI Studio"
+      ],
+      "navAction": {
+        "type": "navigate",
+        "route": "#/events",
+        "label": "🎨 Explore All Events"
+      }
     },
     {
       "id": "event_ethical_conference",
       "patterns": [
-        "tell me about the ethical conference", "ethical conference details", "case study event", "ethics conference"
+        "tell me about the AI Ethics Panel",
+        "AI Ethics Panel details",
+        "case study event",
+        "ethics conference"
       ],
-      "answer": "⚖️ **Ethical Conference**: A focused conference where teams examine bias, privacy, power, and the human consequences of intelligent systems through case studies and presentations.",
-      "quickChips": ["Register", "All Events"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "⚖️ View Ethical Conference" }
+      "answer": "⚖️ **AI Ethics Panel**: A focused conference where teams examine bias, privacy, power, and the human consequences of intelligent systems through case studies and presentations.",
+      "quickChips": [
+        "Register",
+        "All Events"
+      ],
+      "navAction": {
+        "type": "navigate",
+        "route": "#/events",
+        "label": "⚖️ View AI Ethics Panel"
+      }
     },
     {
       "id": "event_hackathon",
       "patterns": [
-        "what is the hackathon", "hackathon details", "build sprint", "programming challenge", "coding event"
+        "what is the hackathon",
+        "hackathon details",
+        "build sprint",
+        "programming challenge",
+        "coding event"
       ],
       "answer": "⚡ **Hackathon**: A fast-moving 3-hour build sprint where teams use AI tools to turn a real-world problem into a working prototype.",
-      "quickChips": ["Register", "All Events"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "⚡ View Hackathon Details" }
+      "quickChips": [
+        "Register",
+        "All Events"
+      ],
+      "navAction": {
+        "type": "navigate",
+        "route": "#/events",
+        "label": "⚡ View Hackathon Details"
+      }
     },
     {
       "id": "event_ai_studio",
       "patterns": [
-        "what is ai studio", "debate details", "ai debate", "machine intelligence debate"
+        "what is ai studio",
+        "debate details",
+        "ai debate",
+        "machine intelligence debate"
       ],
       "answer": "🗣️ **AI Studio**: A debate and performance challenge exploring what machines can do, what humans bring, and where the line keeps moving.",
-      "quickChips": ["Register", "All Events"],
-      "navAction": { "type": "navigate", "route": "#/events", "label": "🗣️ View AI Studio" }
+      "quickChips": [
+        "Register",
+        "All Events"
+      ],
+      "navAction": {
+        "type": "navigate",
+        "route": "#/events",
+        "label": "🗣️ View AI Studio"
+      }
     },
     {
       "id": "rulebook",
       "patterns": [
-        "where are the rules", "competition guidelines", "how does the challenge work", "what are the requirements", "rulebook", "regulations", "terms"
+        "where are the rules",
+        "competition guidelines",
+        "how does the challenge work",
+        "what are the requirements",
+        "rulebook",
+        "regulations",
+        "terms"
       ],
       "answer": "📜 **Rulebook**: All events enforce strict fair-play guidelines. All AI tools and prompts utilized during competitions must be fully documented.",
-      "quickChips": ["Registration", "Eligibility", "Team Size"],
-      "navAction": { "type": "navigate", "route": "#/about", "label": "📖 View Full Rulebook" }
+      "quickChips": [
+        "Registration",
+        "Eligibility",
+        "Team Size"
+      ],
+      "navAction": {
+        "type": "navigate",
+        "route": "#/about",
+        "label": "📖 View Full Rulebook"
+      }
     },
     {
       "id": "venue",
       "patterns": [
-        "host", "hosting", "hosted by", "host school", "who is hosting", "who hosts", "which school is hosting",
-        "where is the event hosted", "event location", "venue address", "where is gems school", "school location", "school map", "map", "directions", "dubai venue", "how to get to venue", "where is it"
+        "host",
+        "hosting",
+        "hosted by",
+        "host school",
+        "who is hosting",
+        "who hosts",
+        "which school is hosting",
+        "where is the event hosted",
+        "event location",
+        "venue address",
+        "where is gems school",
+        "school location",
+        "school map",
+        "map",
+        "directions",
+        "dubai venue",
+        "how to get to venue",
+        "where is it"
       ],
       "answer": "🏫 **Host School & Venue**: AICon is proudly hosted by **GEMS Our Own Indian School, Dubai** (Al Quoz 1, Dubai, UAE).",
-      "quickChips": ["School Website", "Schedule", "Registration"],
-      "navAction": { "type": "url", "url": "https://maps.app.goo.gl/LP9qMhsvuQrmXQzVA", "label": "📍 View Map" }
+      "quickChips": [
+        "School Website",
+        "Schedule",
+        "Registration"
+      ],
+      "navAction": {
+        "type": "url",
+        "url": "https://maps.app.goo.gl/LP9qMhsvuQrmXQzVA",
+        "label": "📍 View Map"
+      }
     },
     {
       "id": "cost",
       "patterns": [
-        "how much does it cost", "is registration free", "entry fee", "ticket price", "is there a charge", "payment details"
+        "how much does it cost",
+        "is registration free",
+        "entry fee",
+        "ticket price",
+        "is there a charge",
+        "payment details"
       ],
       "answer": "🎉 **100% Free**: Participation in AICon is completely free for all registered school teams!",
-      "quickChips": ["Register", "Eligibility", "Venue"],
-      "navAction": { "type": "url", "url": "https://forms.cloud.microsoft/r/gxrsE4k10s", "label": "📝 Register Now for Free" }
+      "quickChips": [
+        "Register",
+        "Eligibility",
+        "Venue"
+      ],
+      "navAction": {
+        "type": "url",
+        "url": "https://forms.cloud.microsoft/r/gxrsE4k10s",
+        "label": "📝 Register Now for Free"
+      }
     },
     {
       "id": "team_eligibility",
       "patterns": [
-        "who is eligible", "what grade can join", "team size requirements", "how many students per team", "can i compete alone", "school requirements"
+        "who is eligible",
+        "what grade can join",
+        "team size requirements",
+        "how many students per team",
+        "can i compete alone",
+        "school requirements"
       ],
-      "answer": "🎓 **Eligibility & Teams**: Open to high school students (Grades 8–12). Team sizes vary by event: Ethical Conference is individual, AI Studio has teams of 3, and Hackathon has teams of 4.",
-      "quickChips": ["Registration", "Rulebook", "Cost"],
-      "navAction": { "type": "url", "url": "https://forms.cloud.microsoft/r/gxrsE4k10s", "label": "👥 Register Your Team" }
+      "answer": "🎓 **Eligibility & Teams**: Open to high school students (Grades 8–12). Team sizes vary by event: AI Ethics Panel is individual, AI Studio has teams of 3, and Hackathon has teams of 4.",
+      "quickChips": [
+        "Registration",
+        "Rulebook",
+        "Cost"
+      ],
+      "navAction": {
+        "type": "url",
+        "url": "https://forms.cloud.microsoft/r/gxrsE4k10s",
+        "label": "👥 Register Your Team"
+      }
     },
     {
       "id": "schedule",
       "patterns": [
-        "when is the event", "event date", "timeline", "when does it start", "schedule details", "program agenda"
+        "when is the event",
+        "event date",
+        "timeline",
+        "when does it start",
+        "schedule details",
+        "program agenda"
       ],
       "answer": "📅 **Schedule**: Competition dates and timeline milestones will be communicated to all registered school delegations via email.",
-      "quickChips": ["Registration", "Venue", "4 Events"],
-      "navAction": { "type": "scroll", "target": "#image-sequence-section", "label": "📅 View Timeline Section" }
+      "quickChips": [
+        "Registration",
+        "Venue",
+        "4 Events"
+      ],
+      "navAction": {
+        "type": "scroll",
+        "target": "#image-sequence-section",
+        "label": "📅 View Timeline Section"
+      }
     },
     {
       "id": "theme",
       "patterns": [
-        "what is the theme of aicon", "mission statement", "motto", "philosophy", "what does aicon stand for"
+        "what is the theme of aicon",
+        "mission statement",
+        "motto",
+        "philosophy",
+        "what does aicon stand for"
       ],
       "answer": "💡 **Theme**: *\"Technology should amplify human identity, not replace it.\"* We promote AI as a tool for creative human amplification.",
-      "quickChips": ["4 Events", "Registration", "Venue"],
-      "navAction": { "type": "navigate", "route": "#/about", "label": "💡 Read Our Mission" }
+      "quickChips": [
+        "4 Events",
+        "Registration",
+        "Venue"
+      ],
+      "navAction": {
+        "type": "navigate",
+        "route": "#/about",
+        "label": "💡 Read Our Mission"
+      }
     },
     {
       "id": "prizes",
       "patterns": [
-        "what are the prizes", "awards info", "trophy details", "certificates", "what do winners get"
+        "what are the prizes",
+        "awards info",
+        "trophy details",
+        "certificates",
+        "what do winners get"
       ],
       "answer": "🏆 **Prizes**: Winners receive Overall School Trophies, medals, tech vouchers, and official verified Certificates of Excellence!",
-      "quickChips": ["4 Events", "Register", "Rulebook"],
-      "navAction": { "type": "navigate", "route": "#/about", "label": "🏆 View Awards Info" }
+      "quickChips": [
+        "4 Events",
+        "Register",
+        "Rulebook"
+      ],
+      "navAction": {
+        "type": "navigate",
+        "route": "#/about",
+        "label": "🏆 View Awards Info"
+      }
     },
     {
       "id": "contact",
       "patterns": [
-        "how to contact organizers", "email address", "support team", "helpdesk", "reach committee"
+        "how to contact organizers",
+        "email address",
+        "support team",
+        "helpdesk",
+        "reach committee"
       ],
       "answer": "📧 **Contact**: Contact the AICon Student Committee at GEMS Our Own Indian School via your teacher advisor or the contact section.",
-      "quickChips": ["Venue", "Registration", "FAQ"],
-      "navAction": { "type": "navigate", "route": "#/about", "label": "📧 Contact Support" }
+      "quickChips": [
+        "Venue",
+        "Registration",
+        "FAQ"
+      ],
+      "navAction": {
+        "type": "navigate",
+        "route": "#/about",
+        "label": "📧 Contact Support"
+      }
     }
   ]
 }
