@@ -7,18 +7,22 @@ const EVENTS_PAGE_CARDS = [
     tag: 'EVENT 1',
     name: 'AI Ethics Panel',
     date: '4 Nov 2026',
+    dateShort: '4th Nov',
+    dateGroup: 'nov4',
     time: '1:30 PM – 3:30 PM',
     venue: 'School Library',
     venueSub: 'Level 2',
     accent: '#FF6600',
     theme: 'white',
-    bgImage: '/event-cards-new/AI Ethics Panel.png',
+    bgImage: '/event-cards-new/Ethical Conference.png',
   },
   {
     id: 2,
     tag: 'EVENT 2',
     name: 'Hackathon',
     date: '5 Nov 2026',
+    dateShort: '5th Nov',
+    dateGroup: 'nov5',
     time: '10:00 AM – 1:00 PM',
     venue: 'Hall',
     venueSub: 'Level 1',
@@ -31,7 +35,9 @@ const EVENTS_PAGE_CARDS = [
     tag: 'EVENT 3',
     name: 'AI Studio',
     date: '4 Nov 2026',
-    time: '1:30 AM – 3:30 PM',
+    dateShort: '4th Nov',
+    dateGroup: 'nov4',
+    time: '1:30 PM – 3:30 PM',
     venue: 'Hall',
     venueSub: 'Level 1',
     accent: '#FF6600',
@@ -49,7 +55,12 @@ export function renderEvents() {
             </header>
             <section class="events-index-grid" aria-label="AICon events">
                 ${EVENTS_PAGE_CARDS.map((ev, i) => `
-                    <div class="playing-card events-page-card event-card-theme-${ev.theme}" data-href="#/event/${ev.id}" style="--card-accent:${ev.accent};" role="article" aria-label="${ev.name}">
+                    <div class="playing-card events-page-card event-card-theme-${ev.theme} date-highlight-${ev.dateGroup}" data-href="#/event/${ev.id}" style="--card-accent:${ev.accent};" role="article" aria-label="${ev.name}">
+                      <!-- Floating Date Highlight Pill -->
+                      <div class="card-date-highlight-pill date-pill-${ev.dateGroup}">
+                        <span class="date-pill-dot" aria-hidden="true"></span>
+                        <span class="date-pill-text">${ev.dateShort}</span>
+                      </div>
                       <div class="playing-card-inner">
                         <img class="event-card-bg" src="${ev.bgImage}" alt="" aria-hidden="true" />
                         <div class="event-card-content">

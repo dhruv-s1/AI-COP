@@ -1505,10 +1505,10 @@ body.light-mode .social-links a:hover {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 1.5rem;
+  gap: 1.85rem;
   position: relative;
   min-height: 560px;
-  padding: 2.5rem 0 1rem;
+  padding: 3rem 1rem 1.5rem;
   perspective: 1200px;
   overflow: visible;
 }
@@ -1527,8 +1527,8 @@ body.light-mode .social-links a:hover {
     transform 0.55s cubic-bezier(0.23, 1, 0.32, 1),
     filter 0.35s ease,
     opacity 0.35s ease;
-  z-index: 1;
-  margin-left: -124px;
+  z-index: 2;
+  margin-left: 0;
   opacity: 0;
   transform: translate3d(0, 110px, 0) rotate(0deg) scale(0.82);
   will-change: transform, opacity, filter;
@@ -1546,23 +1546,177 @@ body.light-mode .social-links a:hover {
   animation-delay: calc(var(--card-i) * 0.12s);
 }
 
-/* Card spread positions — fanned arc (3 cards) */
+/* Card spread positions — arced playing card deck (3 cards fanned in arc) */
 .deck-fanned .playing-card:nth-child(1) {
   --card-rot: -6deg;
-  --card-ty: 12px;
-  z-index: 3;
+  --card-ty: 10px;
+  z-index: 2;
 }
 
 .deck-fanned .playing-card:nth-child(2) {
   --card-rot: 0deg;
-  --card-ty: -8px;
-  z-index: 4;
+  --card-ty: 0px;
+  z-index: 2;
 }
 
 .deck-fanned .playing-card:nth-child(3) {
   --card-rot: 6deg;
-  --card-ty: 12px;
-  z-index: 3;
+  --card-ty: 10px;
+  z-index: 2;
+}
+
+/* Floating date highlight badge atop each card in the deck */
+.card-date-highlight-pill {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.42rem 1.15rem;
+  border-radius: 9999px;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  z-index: 25;
+  pointer-events: none;
+  white-space: nowrap;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+.date-pill-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.date-pill-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  opacity: 0.65;
+  animation: dateDotPulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes dateDotPulse {
+  0% { transform: scale(0.8); opacity: 0.85; }
+  65% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* 4th Nov Highlight (AI Ethics Panel & AI Studio) - Grouped by 4th Nov */
+.date-highlight-nov4 {
+  --card-highlight-color: #ff6600;
+  --card-highlight-glow: rgba(255, 102, 0, 0.45);
+}
+
+.date-pill-nov4 {
+  background: rgba(18, 12, 8, 0.92);
+  border: 1.5px solid #ff6600;
+  color: #ffffff;
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.55),
+    0 0 16px rgba(255, 102, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.date-pill-nov4 .date-pill-dot {
+  background: #ff6600;
+  color: #ff6600;
+  box-shadow: 0 0 8px #ff6600, 0 0 14px #ff6600;
+}
+
+/* Highlight box around 4th Nov cards */
+.date-highlight-nov4 .playing-card-inner {
+  border: 1.5px solid rgba(255, 102, 0, 0.6);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45),
+    0 0 28px -2px rgba(255, 102, 0, 0.28),
+    0 1px 0 rgba(255, 255, 255, 0.35) inset;
+}
+
+/* 5th Nov Highlight (Hackathon) - Separate Date */
+.date-highlight-nov5 {
+  --card-highlight-color: #ffffff;
+  --card-highlight-glow: rgba(242, 242, 244, 0.4);
+}
+
+.date-pill-nov5 {
+  background: rgba(14, 16, 22, 0.92);
+  border: 1.5px solid rgba(242, 242, 244, 0.85);
+  color: #ffffff;
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.55),
+    0 0 16px rgba(242, 242, 244, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.date-pill-nov5 .date-pill-dot {
+  background: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+}
+
+/* Highlight box around 5th Nov card */
+.date-highlight-nov5 .playing-card-inner {
+  border: 1.5px solid rgba(242, 242, 244, 0.6);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45),
+    0 0 28px -2px rgba(242, 242, 244, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.35) inset;
+}
+
+/* Header layout */
+.event-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Light mode support */
+body.light-mode .date-pill-nov4,
+[data-theme="light"] .date-pill-nov4 {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #ff6600;
+  color: #111111;
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.25);
+}
+
+body.light-mode .date-pill-nov5,
+[data-theme="light"] .date-pill-nov5 {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #222222;
+  color: #111111;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+body.light-mode .date-highlight-nov4 .playing-card-inner {
+  border-color: rgba(255, 102, 0, 0.4);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.1),
+    0 0 25px -4px rgba(255, 102, 0, 0.15);
+}
+
+body.light-mode .date-highlight-nov5 .playing-card-inner {
+  border-color: rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.1),
+    0 0 25px -4px rgba(0, 0, 0, 0.08);
 }
 
 @keyframes cardFanIn {
@@ -1616,12 +1770,19 @@ body.light-mode .social-links a:hover {
 }
 
 .playing-card.card-active .playing-card-inner {
-  transform: translate3d(0, -22px, 0) scale(1.06) rotate(-0.8deg);
+  transform: translate3d(0, -24px, 0) scale(1.08) rotate(0deg);
+  border-color: var(--card-highlight-color, #ff6600);
   box-shadow:
-    0 28px 66px rgba(0, 0, 0, 0.48),
-    0 0 0 1px rgba(255, 255, 255, 0.9),
-    0 22px 50px -18px var(--card-accent),
-    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+    0 32px 70px rgba(0, 0, 0, 0.65),
+    0 0 35px var(--card-highlight-glow, rgba(255, 102, 0, 0.4)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.playing-card.card-active .card-date-highlight-pill {
+  transform: translate3d(-50%, -32px, 0) scale(1.06);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.65),
+    0 0 28px var(--card-highlight-glow, rgba(255, 102, 0, 0.5));
 }
 
 .panel-discussion-card .playing-card-inner {
@@ -1916,44 +2077,39 @@ body.light-mode .playing-card:nth-child(even) .playing-card-inner {
 @media (max-width: 1100px) {
   .card-deck {
     min-height: 520px;
-    transform: scale(0.95);
+    gap: 1.25rem;
+    transform: scale(0.96);
     transform-origin: top center;
   }
 
   .playing-card {
-    width: 250px;
-    height: 392px;
-    margin-left: -112px;
-  }
-
-  .deck-fanned .playing-card:nth-child(2),
-  .deck-fanned .playing-card:nth-child(3),
-  .deck-fanned .playing-card:nth-child(4),
-  .deck-fanned .playing-card:nth-child(5) {
-    margin-left: -92px;
+    width: 245px;
+    height: 390px;
+    margin-left: 0;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .card-deck {
     min-height: auto;
     flex-direction: column;
     align-items: center;
-    gap: 1.1rem;
-    padding: 1rem 0 0;
+    gap: 2.25rem;
+    padding: 2.25rem 0 1rem;
     transform: none;
   }
 
   .playing-card {
-    width: min(92vw, 360px);
+    width: min(92vw, 340px);
     height: 394px;
-    margin-left: 0;
+    margin-left: 0 !important;
     opacity: 1;
-    transform: none;
+    transform: none !important;
   }
 
   .deck-fanned .playing-card {
-    animation: cardFanIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: none;
+    transform: none !important;
   }
 
   .playing-card.card-active {
@@ -1966,7 +2122,7 @@ body.light-mode .playing-card:nth-child(even) .playing-card-inner {
   }
 
   .playing-card.card-active .playing-card-inner {
-    transform: translate3d(0, -14px, 0) scale(1.03) rotate(-0.4deg);
+    transform: translate3d(0, -12px, 0) scale(1.03) rotate(0deg);
   }
 }
 

@@ -12,6 +12,10 @@ export function renderEventPage(id) {
 
       <main class="event-ticket-shell">
         <div class="event-ticket-intro">
+          <div class="event-ticket-date-pill date-pill-${event.dateGroup}">
+            <span class="date-pill-dot" aria-hidden="true"></span>
+            <span class="date-pill-text">${event.dateFull || event.date}</span>
+          </div>
           <h1>${event.name}${event.id > 1 ? '<span class="title-dash title-dash--below">&mdash;</span>' : '<span class="title-dash">&mdash;</span>'}</h1>
           <p class="event-ticket-subtitle">${event.subtitle}</p>
         </div>
@@ -50,6 +54,9 @@ export function renderEventPage(id) {
         </section>
 
         <section class="event-ticket-meta scroll-reveal">
+          <div><span>DATE</span><strong>${event.date}</strong></div>
+          <div><span>TIME</span><strong>${event.time}</strong></div>
+          <div><span>VENUE</span><strong>${event.venue}</strong></div>
           <div><span>FORMAT</span><strong>${event.format}</strong></div>
           <div><span>TEAM</span><strong>${event.team}</strong></div>
           <div><span>JUDGING</span><strong>${event.judging}</strong></div>
