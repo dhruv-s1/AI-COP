@@ -1537,11 +1537,19 @@ body:not(.light-mode) .event-selector-card:nth-child(3n) .event-selector-inner {
   transform: translateY(0) scale(0.98);
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
+.ticket-download.is-downloading {
+  opacity: 0.85;
+  pointer-events: none;
+  cursor: wait;
+}
 .download-btn-icon {
   width: 1.25rem;
   height: 1.25rem;
   flex-shrink: 0;
   transition: transform 0.3s ease;
+}
+.ticket-download.is-downloading .download-btn-icon {
+  animation: downloadBounce 0.4s ease infinite;
 }
 .ticket-download:hover .download-btn-icon {
   transform: translateY(2px);
