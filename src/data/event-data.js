@@ -20,8 +20,8 @@ export const EVENT_DATA = [
     accent: '#f5f22d',
     darkImage: '/event-card-dark-mode/Ethical Con.png',
     lightImage: '/event-card-light-mode/Ethical Conferrence.png',
-    file: 'https://5mfnfuyzstdxw0sr.public.blob.vercel-storage.com/AI%20Ethics%20Panel%20Handbook.pdf',
-    fileName: 'AI Ethics Panel Handbook 2026.pdf',
+    file: '/AI Ethics Panel Handbook.pdf',
+    fileName: 'AI Ethics Panel Handbook.pdf',
   },
   {
     id: 2,
@@ -44,8 +44,8 @@ export const EVENT_DATA = [
     accent: '#f5f22d',
     darkImage: '/event-card-dark-mode/Hackathon.png',
     lightImage: '/event-card-light-mode/Hackathon.png',
-    file: 'https://5mfnfuyzstdxw0sr.public.blob.vercel-storage.com/Hackathon%20Handbook.pdf',
-    fileName: 'Hackathon Participant Handbook 2026.pdf',
+    file: '/Hackathon Handbook.pdf',
+    fileName: 'Hackathon Handbook.pdf',
   },
   {
     id: 3,
@@ -68,8 +68,8 @@ export const EVENT_DATA = [
     accent: '#f5f22d',
     darkImage: '/event-card-dark-mode/AI Studio.png',
     lightImage: '/event-card-light-mode/AI Studio.png',
-    file: 'https://5mfnfuyzstdxw0sr.public.blob.vercel-storage.com/AI%20Studio%20Handbook.pdf',
-    fileName: 'AI Studio Participant Handbook 2026.pdf',
+    file: '/AI Studio Handbook.pdf',
+    fileName: 'AI Studio Handbook.pdf',
   },
 ];
 
