@@ -20,7 +20,7 @@ export const EVENT_DATA = [
     accent: '#f5f22d',
     darkImage: '/event-card-dark-mode/Ethical Con.png',
     lightImage: '/event-card-light-mode/Ethical Conferrence.png',
-    file: '/AI Ethics Panel Handbook.pdf',
+    file: '/AI Ethics Panel Handbook 2026.pdf',
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ export const EVENT_DATA = [
     accent: '#f5f22d',
     darkImage: '/event-card-dark-mode/Hackathon.png',
     lightImage: '/event-card-light-mode/Hackathon.png',
-    file: '/Hackathon Participant Handbook.pdf',
+    file: '/Hackathon Participant Handbook 2026.pdf',
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ export const EVENT_DATA = [
     accent: '#f5f22d',
     darkImage: '/event-card-dark-mode/AI Studio.png',
     lightImage: '/event-card-light-mode/AI Studio.png',
-    file: '/AI Studio Challenge Participant Handbook.pdf',
+    file: '/AI Studio Participant Handbook 2026.pdf',
   },
 ];
 
