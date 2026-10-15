@@ -12,7 +12,7 @@ export const EVENT_DATA = [
     venue: 'School Library (Level 2)',
     kicker: 'RESPONSIBLE AI / ETHICS & IMPACT',
     subtitle: 'Every side of AI, one stage.',
-    description: 'An MUN-style debate inviting aspiring leaders and future policymakers to examine the ethical dilemmas and global implications of Artificial Intelligence, fostering critical thinking, informed decision-making, and responsible AI governance.',
+    description: 'An MUN inspired deliberative forum that brings together aspiring leaders and future policymakers to critically examine the ethical challenges and global implications of Artificial Intelligence, encouraging informed debate, strategic thinking, and responsible AI governance.',
     details: 'Take a stance on a real ethical dilemma in AI, defend your position through structured debate, and show how thoughtful discourse can guide responsible innovation.',
     format: 'Discussion + structured debate',
     team: 'Individual participation',
