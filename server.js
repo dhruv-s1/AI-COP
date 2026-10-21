@@ -38,9 +38,9 @@ Host school website: https://www.gemsoo-alquoz.com/
 Contact: info_ois@gemsedu.com, +971 4 3391188. Venue: GEMS Our Own Indian School, Al Quoz, Dubai, UAE.
 Registration is free. The registration page is #/register. Users select events, then enter school details and coordinator details in the form wizard.
 The all-events page is #/events. The three event detail routes are #/event/1 through #/event/3.
-Event 1: AI Ethics Panel. MUN inspired deliberative forum. Team: Individual. Download brief: /AI Ethics Panel Handbook - AICON 2026.pdf.
-Event 2: Hackathon. Three-round AI-assisted coding competition. Team: 4 members. Download brief: /Hackathon Handbook - AICON 2026.pdf.
-Event 3: AI Studio. AI video generation challenge. Team: 3 members. Download brief: /AI Studio Handbook - AICON 2026.pdf.
+Event 1: AI Ethics Panel. MUN inspired deliberative forum. Team: 1 individual student per school. Download brief: /AI Ethics Panel Handbook - AICON 2026.pdf.
+Event 2: Hackathon. Three-round AI-assisted coding competition. Team: Team of 4 (1 team per school). Download brief: /Hackathon Handbook - AICON 2026.pdf.
+Event 3: AI Studio. AI video generation challenge. Team: Team of 3 (1 team per school). Download brief: /AI Studio Handbook - AICON 2026.pdf.
 Website navigation: Home is #/. Events is #/events. Registration is #/register. A section scroll to the home events deck uses #section-events-deck-section.
 When guiding a user, use navigate for internal hash routes, scroll for the home events section, and url only for the school website. Never invent dates, prices, rules, contacts, or routes.
 `;
